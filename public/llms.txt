@@ -1,8 +1,9 @@
 # Ceren's Portfolio
 
-Personal portfolio of Ceren, a biomedical engineer, researcher, and maker.
+> Personal portfolio of Ceren, a biomedical engineer, researcher, and maker.
 
-Main sections:
+The portfolio contains the following main sections:
+
 - About
 - Experience
 - Projects
@@ -10,5 +11,6 @@ Main sections:
 - Hobbies
 - Contact
 
-Canonical site:
-https://cerencetinyurek.com
+## Site
+
+- [Ceren's Portfolio](https://cerencetinyurek.com): Canonical site for the portfolio.
