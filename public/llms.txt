@@ -1,0 +1,14 @@
+# Ceren's Portfolio
+
+Personal portfolio of Ceren, a biomedical engineer, researcher, and maker.
+
+Main sections:
+- About
+- Experience
+- Projects
+- Skills
+- Hobbies
+- Contact
+
+Canonical site:
+https://cerencetinyurek.com
