@@ -16,7 +16,7 @@ export default function PortfolioCard() {
       <p className="absolute m-0 font-fredoka font-normal text-black" style={{ left: 129.591, top: 42.801, width: 330.515, height: 63.012, fontSize: 59.445, lineHeight: "normal", fontVariationSettings: '"wdth" 100' }}>CEREN’S</p>
     </div>
     {stickers.map((s, index) => <div key={s.name} className={`sticker-float sticker-float-${index} absolute flex items-center justify-center`} style={{ left: s.x, top: s.y, width: s.boxW, height: s.boxH }}>
-      <img src={`/images/${s.name}.png`} alt="" draggable={false} width={s.w} height={s.h} className="pointer-events-none max-w-none shrink-0 object-cover select-none" style={{ width: s.w, height: s.h, transform: `rotate(${s.rotate}deg)` }} />
+      <img src={`/images/${s.name}.webp`} alt="" draggable={false} width={s.w} height={s.h} className="pointer-events-none max-w-none shrink-0 object-cover select-none" style={{ width: s.w, height: s.h, transform: `rotate(${s.rotate}deg)` }} />
     </div>)}
   </>;
 }

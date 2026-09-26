@@ -32,7 +32,8 @@ const icons: DesktopIconProps[] = [
 ];
 
 function Artwork({ name, x, y, width, height }: { name: string; x: number; y: number; width: number; height: number }) {
-  return <img className="figma-image" src={`/images/${name}.png`} alt="" draggable={false} width={width} height={height} style={{ left: x, top: y, width, height }} />;
+  const extension = name === "checkerboard" || name === "flower" ? "webp" : "png";
+  return <img className="figma-image" src={`/images/${name}.${extension}`} alt="" draggable={false} width={width} height={height} style={{ left: x, top: y, width, height }} />;
 }
 
 export default function DesktopScreen() {

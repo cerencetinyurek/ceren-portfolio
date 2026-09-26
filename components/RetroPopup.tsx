@@ -3,7 +3,7 @@ const titles: Record<PopupKind, string> = { project: "Projects", experience: "Ex
 
 export default function RetroPopup({ kind, onClose }: { kind: PopupKind; onClose: () => void }) {
   return <section className="retro-popup" aria-label={titles[kind]}>
-    <img className="popup-frame" src="/images/popup-frame.png" width={883} height={795} alt="" draggable={false} />
+    <img className="popup-frame" src="/images/popup-frame.webp" width={883} height={795} alt="" draggable={false} loading="lazy" />
     <div className="popup-title-strip" data-drag-handle><h2 className="popup-title">{titles[kind]}</h2></div>
     <div className="popup-menu" aria-label="Pencere menüsü">
       <span>File</span><span>Edit</span><span>View</span><span>Image</span>

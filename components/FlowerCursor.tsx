@@ -74,8 +74,8 @@ export default function FlowerCursor() {
     };
   }, []);
   return <div ref={layer} popover="manual" className="flower-cursor" aria-hidden="true">
-    <img src="/images/flower.png" alt="" draggable={false} />
-    <img src="/images/cursor-purple.png" alt="" draggable={false} />
-    <img src="/images/cursor-white.png" alt="" draggable={false} />
+    <img src="/images/flower.webp" alt="" draggable={false} />
+    <img src="/images/cursor-purple.webp" alt="" draggable={false} />
+    <img src="/images/cursor-white.webp" alt="" draggable={false} />
   </div>;
 }
