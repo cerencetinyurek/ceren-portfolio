@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Ceren's Portfolio",
   description: "Biomedical engineer / researcher / maker",
   alternates: {
-    canonical: "/",
+    canonical: "https://cerencetinyurek.com",
   },
   icons: {
     icon: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "/",
+    url: "https://cerencetinyurek.com",
     siteName: "Ceren's Portfolio",
     title: "Ceren's Portfolio",
     description: "Biomedical engineer / researcher / maker",
@@ -39,6 +39,17 @@ export const metadata: Metadata = {
   },
 };
 
+const personStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ceren Çetinyürek",
+  url: "https://cerencetinyurek.com",
+  jobTitle: "Biomedical Engineer",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body suppressHydrationWarning>{children}<FlowerCursor /></body></html>;
+  return <html lang="en"><body suppressHydrationWarning>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }} />
+    {children}<FlowerCursor />
+  </body></html>;
 }
