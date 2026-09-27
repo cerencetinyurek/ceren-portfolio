@@ -5,7 +5,7 @@ import DesktopIcon, { type DesktopIconProps } from "./DesktopIcon";
 import PortfolioCard from "./PortfolioCard";
 import RetroPopup, { type PopupKind } from "./RetroPopup";
 import AboutPolaroid from "./AboutPolaroid";
-import DesktopWindow, { type WindowAnchor } from "./DesktopWindow";
+import DesktopWindow, { type MobileWindowPlacement, type WindowAnchor } from "./DesktopWindow";
 import ExploreButton from "./ExploreButton";
 import ExploreWindow from "./ExploreWindow";
 import KirpikAnimation from "./KirpikAnimation";
@@ -70,6 +70,17 @@ const windowTitles: Record<WindowKind, string> = {
   bookmark: "Bookmark",
   explore: "Explore",
   about: "About",
+};
+
+const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
+  project: { x: 0.9, y: 0.1 },
+  experience: { x: 0.05, y: 0.12 },
+  skills: { x: 0.08, y: 0.42 },
+  hobbies: { x: 0.92, y: 0.4 },
+  contact: { x: 0.94, y: 0.72 },
+  bookmark: { x: 0.04, y: 0.74 },
+  about: { x: 0.14, y: 0.43 },
+  explore: { x: 0.42, y: 0.68 },
 };
 
 const icons: DesktopIconProps[] = [
@@ -314,6 +325,7 @@ export default function DesktopScreen() {
           key={kind}
           label={windowTitles[kind]}
           anchor={windowAnchors[kind]}
+          mobilePlacement={mobileWindowPlacements[kind]}
           zIndex={100 + index}
           onActivate={() => activate(kind)}
           className={

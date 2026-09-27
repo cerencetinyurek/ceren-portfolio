@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@fontsource/pixelify-sans/400.css";
 import "@fontsource-variable/fredoka";
 import "./globals.css";
 import FlowerCursor from "@/components/FlowerCursor";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#D9D3FA",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cerencetinyurek.com"),

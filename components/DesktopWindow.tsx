@@ -2,8 +2,9 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 type Point = { x: number; y: number };
 export type WindowAnchor = { selector: string; side: "left" | "right"; gap: number; vertical: number };
-export default function DesktopWindow({ label, anchor, zIndex, onActivate, className = "", children }: {
-  label: string; anchor: WindowAnchor; zIndex: number; onActivate: () => void; className?: string; children: ReactNode;
+export type MobileWindowPlacement = { x: number; y: number };
+export default function DesktopWindow({ label, anchor, mobilePlacement, zIndex, onActivate, className = "", children }: {
+  label: string; anchor: WindowAnchor; mobilePlacement: MobileWindowPlacement; zIndex: number; onActivate: () => void; className?: string; children: ReactNode;
 }) {
   const frame = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<Point | null>(null);
@@ -17,9 +18,13 @@ export default function DesktopWindow({ label, anchor, zIndex, onActivate, class
     const anchorRect = anchorElement?.getBoundingClientRect();
     const frameRect = frame.current!.getBoundingClientRect();
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const mobileSpace = {
+      x: Math.max(0, window.innerWidth - frameRect.width - 16),
+      y: Math.max(0, window.innerHeight - frameRect.height - 16),
+    };
     const initial = constrain(isMobile ? {
-      x: (window.innerWidth - frameRect.width) / 2,
-      y: (window.innerHeight - frameRect.height) / 2,
+      x: 8 + mobileSpace.x * mobilePlacement.x,
+      y: 8 + mobileSpace.y * mobilePlacement.y,
     } : anchorRect ? {
       x: anchor.side === "right" ? anchorRect.right + anchor.gap : anchorRect.left - frameRect.width - anchor.gap,
       y: anchorRect.top + frameRect.height * anchor.vertical,
@@ -30,7 +35,7 @@ export default function DesktopWindow({ label, anchor, zIndex, onActivate, class
     observer.observe(frame.current!);
     window.addEventListener("resize", resize);
     return () => { observer.disconnect(); window.removeEventListener("resize", resize); };
-  }, [anchor.selector, anchor.side, anchor.gap, anchor.vertical]);
+  }, [anchor.selector, anchor.side, anchor.gap, anchor.vertical, mobilePlacement.x, mobilePlacement.y]);
   return <div ref={frame} className={`desktop-window ${className}`} role="dialog" aria-label={label}
     style={{ left: position?.x ?? 0, top: position?.y ?? 0, zIndex, visibility: position ? "visible" : "hidden" }}
     onPointerDown={event => {
