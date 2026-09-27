@@ -11,7 +11,7 @@ export default function PortfolioCard() {
   return <>
     <div className="portfolio-card-layer">
       <div aria-hidden="true" className="portfolio-glass" />
-      <h1 className="absolute m-0 font-pixel font-normal leading-normal text-black" style={{ left: 40.427, top: 117.016, width: 505.284, height: 95.112, fontSize: 89.168, lineHeight: "normal" }}>PORTFOLIO</h1>
+      <h1 className="absolute m-0 font-pixel font-normal leading-normal text-[#79497c]" style={{ left: 40.427, top: 117.016, width: 505.284, height: 95.112, fontSize: 89.168, lineHeight: "normal" }}>PORTFOLIO</h1>
       <p className="absolute m-0 font-fredoka font-normal text-black" style={{ left: 194.98, top: 229.459, width: 291.281, height: 20.211, fontSize: 14.267, lineHeight: "normal", fontVariationSettings: '"wdth" 100' }}>biomedical engineer / researcher / maker</p>
       <p className="absolute m-0 font-fredoka font-normal text-black" style={{ left: 129.591, top: 42.801, width: 330.515, height: 63.012, fontSize: 59.445, lineHeight: "normal", fontVariationSettings: '"wdth" 100' }}>CEREN’S</p>
     </div>

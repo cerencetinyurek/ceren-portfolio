@@ -1,5 +1,5 @@
-export type PopupKind = "project" | "experience" | "hobbies" | "skills" | "contact";
-const titles: Record<PopupKind, string> = { project: "Projects", experience: "Experience", hobbies: "Hobbies", skills: "Skills", contact: "Contact" };
+export type PopupKind = "project" | "experience" | "hobbies" | "skills" | "contact" | "bookmark";
+const titles: Record<PopupKind, string> = { project: "Projects", experience: "Experience", hobbies: "Hobbies", skills: "Skills", contact: "Contact", bookmark: "Bookmark" };
 
 export default function RetroPopup({ kind, onClose }: { kind: PopupKind; onClose: () => void }) {
   return <section className="retro-popup" aria-label={titles[kind]}>

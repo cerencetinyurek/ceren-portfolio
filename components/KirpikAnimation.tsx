@@ -14,8 +14,8 @@ const STRETCH_DURATION = 1000;
 const WALK_FRAME_TIME = 145;
 // State scaling grows around the bottom center. These coordinates keep the
 // larger sitting pose clear of Meow and the sleeping pose clear of Explore.
-const START_X = 1052;
-const END_X = 415;
+const START_X = 1102;
+const END_X = 365;
 
 type KirpikPhase = "idle-start" | "walking" | "idle-end" | "stretching" | "sleeping";
 
