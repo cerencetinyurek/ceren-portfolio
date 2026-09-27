@@ -5,12 +5,13 @@ export type DesktopIconProps = {
   image: Rect;
   text: Rect;
   artworkMaxSize?: number;
+  artworkScale?: number;
   onOpen?: () => void;
   href?: string;
   hasPopup?: boolean;
 };
 
-export default function DesktopIcon({ name, label, image, text, artworkMaxSize, onOpen, href, hasPopup = true }: DesktopIconProps) {
+export default function DesktopIcon({ name, label, image, text, artworkMaxSize, artworkScale, onOpen, href, hasPopup = true }: DesktopIconProps) {
   const accessibleName = name === "project" ? "Projects" : name[0].toUpperCase() + name.slice(1);
   const artworkWidth = artworkMaxSize ?? image.width;
   const artworkHeight = artworkMaxSize ?? image.height;
@@ -31,6 +32,8 @@ export default function DesktopIcon({ name, label, image, text, artworkMaxSize, 
         top: image.y + (image.height - artworkHeight) / 2,
         width: artworkWidth,
         height: artworkHeight,
+        transform: artworkScale ? `scale(${artworkScale})` : undefined,
+        transformOrigin: "center",
       }} />
     {href ? (
       <a className="desktop-icon-button" aria-label={accessibleName} href={href} style={hitArea} />
