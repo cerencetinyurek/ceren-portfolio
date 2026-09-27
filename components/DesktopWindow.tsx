@@ -16,7 +16,11 @@ export default function DesktopWindow({ label, anchor, zIndex, onActivate, class
     const anchorElement = document.querySelector<HTMLElement>(anchor.selector);
     const anchorRect = anchorElement?.getBoundingClientRect();
     const frameRect = frame.current!.getBoundingClientRect();
-    const initial = constrain(anchorRect ? {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const initial = constrain(isMobile ? {
+      x: (window.innerWidth - frameRect.width) / 2,
+      y: (window.innerHeight - frameRect.height) / 2,
+    } : anchorRect ? {
       x: anchor.side === "right" ? anchorRect.right + anchor.gap : anchorRect.left - frameRect.width - anchor.gap,
       y: anchorRect.top + frameRect.height * anchor.vertical,
     } : { x: (window.innerWidth - frameRect.width) / 2, y: (window.innerHeight - frameRect.height) / 2 });

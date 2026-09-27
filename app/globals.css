@@ -303,6 +303,9 @@ body {
   transform: scale(0.9);
   transform-origin: center;
 }
+.portfolio-cluster {
+  display: contents;
+}
 .portfolio-glass {
   position: absolute;
   inset: 0;
@@ -590,4 +593,541 @@ body {
   .flower-cursor {
     display: none;
   }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .desktop-page {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    max-height: 100dvh;
+    display: block;
+    padding: max(8px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(8px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .desktop-viewport {
+    width: min(calc(100vw - 16px), 740px);
+    height: calc(100dvh - 16px);
+    min-height: 0;
+    max-height: calc(100dvh - 16px);
+    margin: 0 auto;
+    aspect-ratio: auto;
+    container-type: normal;
+    overflow: hidden;
+  }
+
+  .desktop-canvas {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    transform: none;
+    overflow: hidden;
+  }
+
+  .desktop-canvas::after {
+    content: "";
+    position: absolute;
+    z-index: 20;
+    inset: 0;
+    box-sizing: border-box;
+    border: clamp(5px, 1.54vw, 8px) solid #f4e7a1;
+    pointer-events: none;
+  }
+
+  .desktop-outer-frame {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .figma-artwork-bg-liquified {
+    left: 1.54% !important;
+    top: 3.84% !important;
+    width: 96.92% !important;
+    height: 88.81% !important;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .desktop-topbar {
+    left: 1.54% !important;
+    top: 0.85% !important;
+    width: 96.92% !important;
+    height: 2.99% !important;
+  }
+
+  .desktop-taskbar {
+    left: 0 !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 10.45% !important;
+    background: linear-gradient(to bottom, #d9d3fa 0 29.6%, #f4e7a1 29.6% 100%);
+  }
+
+  .figma-artwork-close,
+  .figma-artwork-minimize,
+  .figma-artwork-maximize {
+    top: 13px !important;
+    width: 18px !important;
+    height: 18px !important;
+    object-fit: contain;
+  }
+
+  .figma-artwork-close {
+    left: calc(100% - 31px) !important;
+  }
+
+  .figma-artwork-maximize {
+    left: calc(100% - 54px) !important;
+  }
+
+  .figma-artwork-minimize {
+    left: calc(100% - 77px) !important;
+  }
+
+  .figma-artwork-flower {
+    left: 1.54% !important;
+    top: 0 !important;
+    width: 18.08% !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  .portfolio-card-layer {
+    left: 8.34% !important;
+    top: 15.82% !important;
+    width: 79.32% !important;
+    height: 66.84% !important;
+    transform: none;
+  }
+
+  .portfolio-cluster {
+    display: block;
+    position: absolute;
+    left: 4.62%;
+    top: 8.53%;
+    width: 95.38%;
+    height: 36.35%;
+  }
+
+  .portfolio-name,
+  .portfolio-title,
+  .portfolio-subtitle {
+    left: 0 !important;
+    width: 100% !important;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .portfolio-name {
+    top: 13.74% !important;
+    height: auto !important;
+    font-size: clamp(36px, 10vw, 41px) !important;
+  }
+
+  .portfolio-title {
+    top: 37.41% !important;
+    height: auto !important;
+    font-size: clamp(46px, 13vw, 52px) !important;
+  }
+
+  .portfolio-subtitle {
+    top: 73.73% !important;
+    height: auto !important;
+    padding-inline: 12px;
+    box-sizing: border-box;
+    font-size: clamp(8px, 2vw, 10px) !important;
+  }
+
+  .sticker-float {
+    animation-duration: 11s;
+  }
+
+  .sticker-float img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  .sticker-float-0 {
+    left: 9.46% !important;
+    top: 0.27% !important;
+    width: 22.24% !important;
+    height: 32.35% !important;
+  }
+
+  .sticker-float-1 {
+    left: 78.24% !important;
+    top: 65.83% !important;
+    width: 16.22% !important;
+    height: 22.77% !important;
+  }
+
+  .sticker-float-2 {
+    left: 75.4% !important;
+    top: 0 !important;
+    width: 24.6% !important;
+    height: 35.78% !important;
+  }
+
+  .sticker-float-3 {
+    left: 63.48% !important;
+    top: 77.51% !important;
+    width: 17.36% !important;
+    height: 24.79% !important;
+  }
+
+  .sticker-float-4 {
+    left: 1.7% !important;
+    top: 13.99% !important;
+    width: 17.54% !important;
+    height: 25.52% !important;
+  }
+
+  .sticker-float-5 {
+    left: 0 !important;
+    top: 60.41% !important;
+    width: 27.22% !important;
+    height: 39.59% !important;
+  }
+
+  .desktop-icon-art {
+    object-fit: contain;
+  }
+
+  .desktop-icon-label {
+    width: 24% !important;
+    height: auto !important;
+    font-size: clamp(10px, 2.72vw, 11px);
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .desktop-icon-label[data-icon="about"],
+  .desktop-icon-label[data-icon="contact"] {
+    transform: translateY(-8px);
+  }
+
+  .desktop-icon-label[data-icon="experience"],
+  .desktop-icon-label[data-icon="skills"] {
+    transform: translateY(-10px);
+  }
+
+  .desktop-icon-label[data-icon="project"],
+  .desktop-icon-label[data-icon="hobbies"] {
+    transform: translateY(-11px);
+  }
+
+  .desktop-icon-label[data-icon="bookmark"],
+  .desktop-icon-label[data-icon="booknook"] {
+    transform: translateY(-18px);
+  }
+
+  .desktop-icon-label[data-icon="about"],
+  .desktop-icon-label[data-icon="experience"],
+  .desktop-icon-label[data-icon="project"],
+  .desktop-icon-label[data-icon="bookmark"] {
+    left: 2.2% !important;
+  }
+
+  .desktop-icon-label[data-icon="contact"],
+  .desktop-icon-label[data-icon="hobbies"],
+  .desktop-icon-label[data-icon="skills"],
+  .desktop-icon-label[data-icon="booknook"] {
+    left: 74.6% !important;
+  }
+
+  .desktop-icon-art[data-icon="booknook"] {
+    left: 74.2% !important;
+    top: 73.13% !important;
+    width: 24.89% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .desktop-icon-art[data-icon="bookmark"] {
+    left: 7.485% !important;
+    top: 78.13% !important;
+    width: 13.47% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .desktop-icon-label[data-icon="booknook"],
+  .desktop-icon-label[data-icon="bookmark"] {
+    top: 86.2% !important;
+  }
+
+  .desktop-icon-art[data-icon="about"],
+  .desktop-icon-art[data-icon="contact"] {
+    top: 43.8% !important;
+  }
+
+  .desktop-icon-art[data-icon="experience"],
+  .desktop-icon-art[data-icon="skills"] {
+    top: 55.8% !important;
+  }
+
+  .desktop-icon-art[data-icon="project"],
+  .desktop-icon-art[data-icon="hobbies"] {
+    top: 66.9% !important;
+  }
+
+  .desktop-icon-art[data-icon="about"],
+  .desktop-icon-art[data-icon="experience"],
+  .desktop-icon-art[data-icon="project"] {
+    left: 7.1% !important;
+    width: 14.24% !important;
+    height: auto !important;
+  }
+
+  .desktop-icon-art[data-icon="hobbies"],
+  .desktop-icon-art[data-icon="skills"],
+  .desktop-icon-art[data-icon="contact"] {
+    left: 79.6% !important;
+    width: 14.09% !important;
+    height: auto !important;
+  }
+
+  .desktop-icon-label[data-icon="about"],
+  .desktop-icon-label[data-icon="contact"] {
+    top: 51.8% !important;
+  }
+
+  .desktop-icon-label[data-icon="experience"],
+  .desktop-icon-label[data-icon="skills"] {
+    top: 63% !important;
+  }
+
+  .desktop-icon-label[data-icon="project"],
+  .desktop-icon-label[data-icon="hobbies"] {
+    top: 73.75% !important;
+  }
+
+  .desktop-icon-button[data-icon]:not([data-icon="meow"]) {
+    width: 26% !important;
+    height: 11% !important;
+  }
+
+  .desktop-icon-button[data-icon="booknook"],
+  .desktop-icon-button[data-icon="contact"],
+  .desktop-icon-button[data-icon="skills"],
+  .desktop-icon-button[data-icon="hobbies"] {
+    left: 73% !important;
+  }
+
+  .desktop-icon-button[data-icon="about"],
+  .desktop-icon-button[data-icon="experience"],
+  .desktop-icon-button[data-icon="project"],
+  .desktop-icon-button[data-icon="bookmark"] {
+    left: 1% !important;
+  }
+
+  .desktop-icon-button[data-icon="about"],
+  .desktop-icon-button[data-icon="contact"] { top: 42% !important; }
+  .desktop-icon-button[data-icon="experience"],
+  .desktop-icon-button[data-icon="skills"] { top: 54% !important; }
+  .desktop-icon-button[data-icon="project"],
+  .desktop-icon-button[data-icon="hobbies"] { top: 65.8% !important; }
+  .desktop-icon-button[data-icon="bookmark"],
+  .desktop-icon-button[data-icon="booknook"] { top: 76% !important; height: 12% !important; }
+
+  .desktop-icon-label[data-icon="bookmark"] { left: 2.2% !important; }
+  .desktop-icon-label[data-icon="booknook"] { left: 74.6% !important; }
+
+  .desktop-icon-art[data-icon="contact"] { left: 79.6% !important; }
+  .desktop-icon-label[data-icon="contact"] { top: 51.8% !important; }
+  .desktop-icon-label[data-icon="skills"] { top: 63% !important; }
+  .desktop-icon-label[data-icon="hobbies"] { top: 73.75% !important; }
+  .desktop-icon-label[data-icon="booknook"] { top: 83.84% !important; }
+  .desktop-icon-label[data-icon="bookmark"],
+  .desktop-icon-label[data-icon="booknook"] { top: 85.8% !important; }
+  .explore-button {
+    left: 1.92% !important;
+    top: auto !important;
+    bottom: 1.81% !important;
+    width: 27.12% !important;
+    height: auto !important;
+    aspect-ratio: 141 / 106;
+  }
+
+  .desktop-icon-art[data-icon="meow"] {
+    left: auto !important;
+    right: 5.12% !important;
+    top: auto !important;
+    bottom: 2.75% !important;
+    width: 14.26% !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  .desktop-icon-label[data-icon="meow"] {
+    left: auto !important;
+    right: 3.08% !important;
+    top: auto !important;
+    bottom: 2.77% !important;
+    width: 18% !important;
+    height: auto !important;
+    font-size: clamp(10px, 2.72vw, 11px);
+    line-height: 1;
+  }
+
+  .desktop-icon-button[data-icon="meow"] {
+    left: auto !important;
+    right: 1.5% !important;
+    top: auto !important;
+    bottom: 1.5% !important;
+    width: 24% !important;
+    height: 11.5% !important;
+  }
+
+  .kirpik-sprite {
+    display: none !important;
+  }
+
+  .mobile-kirpik {
+    position: absolute;
+    z-index: 4;
+    left: 65.5%;
+    bottom: 6.983%;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+    transform: translateX(-50%);
+    transform-origin: bottom center;
+    transition:
+      width 220ms ease-out,
+      height 220ms ease-out;
+  }
+
+  .mobile-kirpik-sitting {
+    width: 15.534%;
+    height: 9.382%;
+  }
+
+  .mobile-kirpik-stretching {
+    width: 23.689%;
+    height: 10.874%;
+  }
+
+  .mobile-kirpik-sleeping,
+  .mobile-kirpik-closing {
+    width: 26.99%;
+    height: 11.834%;
+  }
+
+  .mobile-kirpik > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    image-rendering: pixelated;
+    transform-origin: bottom center;
+    transition: opacity 160ms ease-out;
+  }
+
+  .mobile-kirpik-closing > img {
+    opacity: 0;
+  }
+
+  .mobile-kirpik-closing {
+    pointer-events: none;
+  }
+
+  .mobile-kirpik .kirpik-pixel-heart {
+    left: calc(50% - 16px);
+    top: calc(50% - 16px);
+    width: 32px;
+    height: 32px;
+    animation-duration: 650ms;
+  }
+
+  .mobile-kirpik .kirpik-pixel-heart span {
+    left: 14px;
+    top: 8px;
+  }
+
+  .desktop-window-popup {
+    width: min(74vw, 285px);
+    max-width: 285px;
+  }
+
+  .desktop-window-explore {
+    width: min(78vw, 260px);
+    max-width: 260px;
+  }
+
+  .desktop-window-about {
+    width: min(72vw, 230px, calc((100dvh - 24px) * 0.79));
+    padding: 10px;
+  }
+
+  .popup-content {
+    overflow: auto;
+  }
+
+  .popup-close,
+  .explore-close {
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .flower-cursor {
+    display: none !important;
+  }
+
+  html.flower-cursor-active,
+  html.flower-cursor-active * {
+    cursor: auto !important;
+  }
+}
+
+@media (max-width: 768px) and (min-height: 760px) {
+  .portfolio-cluster { left: 1.94%; top: 9.06%; width: 96.31%; }
+  .portfolio-card-layer { left: 8.34% !important; top: 15.82% !important; }
+
+  .desktop-icon-art[data-icon="about"] { left: 5.3% !important; top: 45.1% !important; }
+  .desktop-icon-label[data-icon="about"] { left: 0.4% !important; top: 53% !important; }
+  .desktop-icon-art[data-icon="experience"] { left: 5.3% !important; top: 56.5% !important; }
+  .desktop-icon-label[data-icon="experience"] { left: 0.4% !important; top: 64% !important; }
+  .desktop-icon-art[data-icon="project"] { left: 5.3% !important; top: 67.6% !important; }
+  .desktop-icon-label[data-icon="project"] { left: 0.4% !important; top: 74.6% !important; }
+  .desktop-icon-art[data-icon="bookmark"] { left: 5.685% !important; top: 77.61% !important; }
+  .desktop-icon-label[data-icon="bookmark"] { left: 0.4% !important; top: 85.7% !important; }
+
+  .desktop-icon-art[data-icon="contact"] { left: 77.4% !important; top: 45.1% !important; }
+  .desktop-icon-label[data-icon="contact"] { left: 72.4% !important; top: 53% !important; }
+  .desktop-icon-art[data-icon="skills"] { left: 77.4% !important; top: 56.5% !important; }
+  .desktop-icon-label[data-icon="skills"] { left: 72.4% !important; top: 64% !important; }
+  .desktop-icon-art[data-icon="hobbies"] { left: 77.4% !important; top: 67.6% !important; }
+  .desktop-icon-label[data-icon="hobbies"] { left: 72.4% !important; top: 74.6% !important; }
+  .desktop-icon-art[data-icon="booknook"] { left: 72% !important; top: 74.52% !important; }
+  .desktop-icon-label[data-icon="booknook"] { left: 72.4% !important; top: 85.7% !important; }
+
+  .explore-button { left: 0 !important; bottom: 1.07% !important; }
+  .desktop-icon-art[data-icon="meow"] { right: 4.18% !important; bottom: 2.66% !important; }
+  .desktop-icon-label[data-icon="meow"] { right: 3.1% !important; bottom: 2.66% !important; }
 }

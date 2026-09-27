@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import DesktopIcon, { type DesktopIconProps } from "./DesktopIcon";
 import PortfolioCard from "./PortfolioCard";
 import RetroPopup, { type PopupKind } from "./RetroPopup";
@@ -9,6 +9,7 @@ import DesktopWindow, { type WindowAnchor } from "./DesktopWindow";
 import ExploreButton from "./ExploreButton";
 import ExploreWindow from "./ExploreWindow";
 import KirpikAnimation from "./KirpikAnimation";
+import MobileKirpikAnimation, { type MobileKirpikPhase } from "./MobileKirpikAnimation";
 type WindowKind = PopupKind | "explore" | "about";
 const windowAnchors: Record<WindowKind, WindowAnchor> = {
   project: {
@@ -149,7 +150,7 @@ function Artwork({
     name === "checkerboard" || name === "flower" ? "webp" : "png";
   return (
     <img
-      className="figma-image"
+      className={`figma-image figma-artwork figma-artwork-${name}`}
       src={`/images/${name}.${extension}`}
       alt=""
       draggable={false}
@@ -164,7 +165,21 @@ export default function DesktopScreen() {
   const [windows, setWindows] = useState<WindowKind[]>([]);
   const [kirpikRun, setKirpikRun] = useState<number | null>(null);
   const [kirpikClosing, setKirpikClosing] = useState(false);
+  const [mobileKirpikPhase, setMobileKirpikPhase] = useState<MobileKirpikPhase>("hidden");
+  const advanceMobileKirpikState = useCallback(() => {
+    setMobileKirpikPhase((current) => {
+      if (current === "hidden") return "sitting";
+      if (current === "sitting") return "stretching";
+      if (current === "stretching") return "sleeping";
+      if (current === "sleeping") return "closing";
+      return current;
+    });
+  }, []);
   const toggleKirpik = () => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      advanceMobileKirpikState();
+      return;
+    }
     if (kirpikClosing) return;
     if (kirpikRun === null) {
       setKirpikRun(1);
@@ -188,6 +203,17 @@ export default function DesktopScreen() {
         ? previous.filter((item) => item !== kind)
         : [...previous, kind],
     );
+  useEffect(() => {
+    if (windows.length === 0) return;
+    const closeTopWindow = (event: PointerEvent) => {
+      if (!window.matchMedia("(max-width: 768px)").matches) return;
+      const target = event.target as HTMLElement;
+      if (target.closest(".desktop-window, .desktop-icon-button, .explore-button")) return;
+      setWindows((previous) => previous.slice(0, -1));
+    };
+    document.addEventListener("pointerdown", closeTopWindow);
+    return () => document.removeEventListener("pointerdown", closeTopWindow);
+  }, [windows.length]);
   return (
     <>
       <div className="desktop-viewport">
@@ -206,7 +232,7 @@ export default function DesktopScreen() {
             height={800}
           />
           <div
-            className="absolute border-solid"
+            className="desktop-topbar absolute border-solid"
             style={{
               left: 61,
               top: 74.27,
@@ -268,6 +294,11 @@ export default function DesktopScreen() {
             runId={kirpikRun}
             closing={kirpikClosing}
             onClosed={removeKirpik}
+          />
+          <MobileKirpikAnimation
+            phase={mobileKirpikPhase}
+            onAdvance={advanceMobileKirpikState}
+            onClosed={() => setMobileKirpikPhase("hidden")}
           />
           <Artwork
             name="flower"

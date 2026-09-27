@@ -23,9 +23,9 @@ export default function DesktopIcon({ name, label, image, text, artworkMaxSize, 
   };
 
   return <>
-    <p className="figma-label" style={{ left: text.x, top: text.y, width: text.width, height: text.height }}>{label}</p>
+    <p className="figma-label desktop-icon-label" data-icon={name} style={{ left: text.x, top: text.y, width: text.width, height: text.height }}>{label}</p>
     {/* Original Figma raster artwork, including its transparent padding. */}
-    <img className={`figma-image${artworkMaxSize ? " paired-desktop-icon" : ""}`} src={`/images/${name}.png`} alt="" draggable={false}
+    <img className={`figma-image desktop-icon-art${artworkMaxSize ? " paired-desktop-icon" : ""}`} data-icon={name} src={`/images/${name}.png`} alt="" draggable={false}
       width={artworkWidth} height={artworkHeight}
       style={{
         left: image.x + (image.width - artworkWidth) / 2,
@@ -36,9 +36,9 @@ export default function DesktopIcon({ name, label, image, text, artworkMaxSize, 
         transformOrigin: "center",
       }} />
     {href ? (
-      <a className="desktop-icon-button" aria-label={accessibleName} href={href} style={hitArea} />
+      <a className="desktop-icon-button" data-icon={name} aria-label={accessibleName} href={href} style={hitArea} />
     ) : onOpen ? (
-      <button type="button" className="desktop-icon-button" aria-label={accessibleName} aria-haspopup={hasPopup ? "dialog" : undefined} onClick={onOpen} style={hitArea} />
+      <button type="button" className="desktop-icon-button" data-icon={name} aria-label={accessibleName} aria-haspopup={hasPopup ? "dialog" : undefined} onClick={onOpen} style={hitArea} />
     ) : null}
   </>;
 }
