@@ -1058,7 +1058,7 @@ body {
   }
 
   .desktop-icon-item[data-icon="booknook"] {
-    top: calc(77.6% - clamp(29.75px, 7.86vw, 30.91px) + 18px);
+    top: calc(77.6% - clamp(29.75px, 7.86vw, 30.91px) + 25px);
   }
 }
 
