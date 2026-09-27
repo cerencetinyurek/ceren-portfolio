@@ -1060,6 +1060,10 @@ body {
   .desktop-icon-item[data-icon="booknook"] {
     top: calc(77.6% - clamp(29.75px, 7.86vw, 30.91px) + 25px);
   }
+
+  .desktop-icon-item[data-icon="booknook"] .desktop-icon-label {
+    transform: translateY(-10px) !important;
+  }
 }
 
 @media (max-width: 768px) and (min-height: 760px) {
