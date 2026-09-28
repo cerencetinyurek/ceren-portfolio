@@ -18,6 +18,13 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #e2c7eb 0%,
+    #e5c8eb 34%,
+    #e9caeb 69%,
+    #ecccea 100%
+  );
 }
 /* Figma: 1440 × 1025. Keep every coordinate and layer in its original place. */
 .desktop-viewport {
@@ -614,7 +621,13 @@ body {
     --desktop-frame-max-width: 1298px;
     --desktop-frame-inline-gap: 32px;
     --desktop-frame-block-gap: 32px;
-    background: #e2c7eb !important;
+    background: linear-gradient(
+      180deg,
+      #e2c7eb 0%,
+      #e5c8eb 34%,
+      #e9caeb 69%,
+      #ecccea 100%
+    ) !important;
   }
 
   .desktop-viewport {
