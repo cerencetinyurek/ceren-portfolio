@@ -609,6 +609,173 @@ body {
   animation-delay: -3.8s;
   animation-direction: reverse;
 }
+@media (min-width: 769px) {
+  .desktop-page {
+    --desktop-frame-max-width: 1298px;
+    --desktop-frame-inline-gap: 32px;
+    --desktop-frame-block-gap: 32px;
+    background: #e2c7eb !important;
+  }
+
+  .desktop-viewport {
+    width: min(
+      var(--desktop-frame-max-width),
+      calc(100vw - var(--desktop-frame-inline-gap)),
+      calc((100dvh - var(--desktop-frame-block-gap)) * 1440 / 1025)
+    );
+    max-height: calc(100dvh - var(--desktop-frame-block-gap));
+    margin: auto;
+  }
+
+  .desktop-canvas::before {
+    content: "";
+    position: absolute;
+    z-index: 19;
+    left: 55px;
+    top: 69px;
+    width: 1330px;
+    height: 858px;
+    box-sizing: border-box;
+    border: 7px solid #f4e7a1;
+    pointer-events: none;
+  }
+
+  .portfolio-card-layer {
+    transform: scale(1.42, 1.32);
+  }
+
+  .portfolio-glass {
+    background: linear-gradient(
+      135deg,
+      rgba(217, 211, 250, 0.64),
+      rgba(238, 202, 232, 0.47)
+    );
+    border-color: rgba(255, 249, 242, 0.86);
+    backdrop-filter: blur(11px);
+    box-shadow:
+      0 17px 38px rgba(121, 73, 124, 0.23),
+      0 0 31px rgba(224, 160, 210, 0.23),
+      inset 0 1px 1px rgba(255, 255, 255, 0.66);
+  }
+
+  .figma-artwork-bg-liquified {
+    filter: saturate(1.05) contrast(1.02);
+  }
+
+  .desktop-icon-item[data-icon="about"],
+  .desktop-icon-item[data-icon="experience"],
+  .desktop-icon-item[data-icon="project"],
+  .desktop-icon-item[data-icon="bookmark"] {
+    translate: 48px 0;
+  }
+
+  .desktop-icon-item[data-icon="contact"],
+  .desktop-icon-item[data-icon="skills"],
+  .desktop-icon-item[data-icon="hobbies"],
+  .desktop-icon-item[data-icon="booknook"] {
+    translate: -48px 0;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-visual {
+    width: 100%;
+    height: var(--desktop-icon-visual-height);
+    display: grid;
+    place-items: center;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-art {
+    position: static;
+    flex: none;
+    object-fit: contain;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-label {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-button {
+    inset: -5px;
+    width: auto;
+    height: auto;
+  }
+
+  .sticker-float-0 {
+    left: 386.6px !important;
+    top: 217.55px !important;
+  }
+
+  .sticker-float-1 {
+    left: 974.05px !important;
+    top: 584.61px !important;
+  }
+
+  .sticker-float-2 {
+    left: 962.19px !important;
+    top: 217.41px !important;
+  }
+
+  .sticker-float-3 {
+    left: 856.19px !important;
+    top: 630.24px !important;
+  }
+
+  .sticker-float-4 {
+    left: 316.84px !important;
+    top: 294.94px !important;
+  }
+
+  .sticker-float-5 {
+    left: 300.86px !important;
+    top: 551.26px !important;
+  }
+
+  .desktop-taskbar {
+    border-top-color: rgba(255, 249, 242, 0.98);
+    box-shadow:
+      0 -4px 12px rgba(121, 73, 124, 0.11),
+      inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (min-width: 1440px) {
+  .desktop-page {
+    --desktop-frame-max-width: 1340px;
+    --desktop-frame-inline-gap: 48px;
+    --desktop-frame-block-gap: 44px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .desktop-page {
+    --desktop-frame-max-width: 1280px;
+    --desktop-frame-inline-gap: 32px;
+    --desktop-frame-block-gap: 32px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .desktop-page {
+    --desktop-frame-max-width: 100%;
+    --desktop-frame-inline-gap: 24px;
+    --desktop-frame-block-gap: 24px;
+  }
+}
 .explore-button {
   position: absolute;
   left: 84.903px;
@@ -672,6 +839,39 @@ body {
 }
 .explore-drag-handle:active {
   cursor: grabbing;
+}
+.explore-content {
+  position: absolute;
+  left: 5.5%;
+  top: 40%;
+  width: 89%;
+  height: 53%;
+  box-sizing: border-box;
+  padding: 1.5cqw 3cqw;
+  overflow: auto;
+  color: #58365b;
+  font-family: var(--font-fredoka);
+  font-size: 4cqw;
+  line-height: 1.25;
+}
+.explore-content ul {
+  display: grid;
+  gap: 1cqw;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.explore-content li {
+  display: flex;
+  gap: 1.5cqw;
+}
+.explore-content li::before {
+  content: "•";
+  flex: none;
+}
+.explore-content p {
+  margin: 2cqw 0 0;
+  font-weight: 600;
 }
 .explore-close {
   position: absolute;
@@ -1207,9 +1407,6 @@ body {
     top: calc(77.6% - clamp(29.75px, 7.86vw, 30.91px) + 20px);
   }
 
-  .desktop-icon-item[data-icon="booknook"] .desktop-icon-label {
-    transform: translateY(-12px) !important;
-  }
 }
 
 @media (max-width: 768px) and (min-height: 760px) {

@@ -186,6 +186,14 @@ export const portfolioContent = {
   desktop: {
     meowLabel: "MEOW",
     exploreTitle: "Explore",
+    exploreContent: {
+      instructions: [
+        "Click any desktop icon to explore",
+        "Drag windows around",
+        "Use the X button to close windows",
+      ],
+      closing: "Thanks for visiting! ❤︎",
+    },
     popupMenu: ["File", "Edit", "View", "Image"],
   },
   accessibility: {
