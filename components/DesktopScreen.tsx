@@ -10,66 +10,68 @@ import ExploreButton from "./ExploreButton";
 import ExploreWindow from "./ExploreWindow";
 import KirpikAnimation from "./KirpikAnimation";
 import MobileKirpikAnimation, { type MobileKirpikPhase } from "./MobileKirpikAnimation";
+import { portfolioContent } from "../content/portfolio";
 type WindowKind = PopupKind | "explore" | "about";
+const iconSelector = (label: string) => `button[aria-label="${label}"]`;
 const windowAnchors: Record<WindowKind, WindowAnchor> = {
   project: {
-    selector: 'button[aria-label="Projects"]',
+    selector: iconSelector(portfolioContent.sections.project.title),
     side: "right",
     gap: 20,
     vertical: -0.46,
   },
   experience: {
-    selector: 'button[aria-label="Experience"]',
+    selector: iconSelector(portfolioContent.sections.experience.title),
     side: "right",
     gap: 26,
     vertical: -0.3,
   },
   skills: {
-    selector: 'button[aria-label="Skills"]',
+    selector: iconSelector(portfolioContent.sections.skills.title),
     side: "left",
     gap: 50,
     vertical: -0.24,
   },
   hobbies: {
-    selector: 'button[aria-label="Hobbies"]',
+    selector: iconSelector(portfolioContent.sections.hobbies.title),
     side: "left",
     gap: 30,
     vertical: -0.18,
   },
   contact: {
-    selector: 'button[aria-label="Contact"]',
+    selector: iconSelector(portfolioContent.sections.contact.title),
     side: "left",
     gap: 6,
     vertical: -0.52,
   },
   bookmark: {
-    selector: 'button[aria-label="Bookmark"]',
+    selector: iconSelector(portfolioContent.sections.bookmark.title),
     side: "right",
     gap: 24,
     vertical: -0.08,
   },
   explore: {
-    selector: 'button[aria-label="Explore"]',
+    selector: iconSelector(portfolioContent.desktop.exploreTitle),
     side: "right",
     gap: 14,
     vertical: -0.66,
   },
   about: {
-    selector: 'button[aria-label="About"]',
+    selector: iconSelector(portfolioContent.sections.about.title),
     side: "right",
     gap: 18,
     vertical: -0.24,
   },
 };
 const windowTitles: Record<WindowKind, string> = {
-  project: "Projects",
-  experience: "Experience",
-  skills: "Skills",
-  hobbies: "Hobbies",
-  contact: "Contact",
-  bookmark: "Bookmark",
-  explore: "Explore",
-  about: "About",
+  project: portfolioContent.sections.project.title,
+  experience: portfolioContent.sections.experience.title,
+  skills: portfolioContent.sections.skills.title,
+  hobbies: portfolioContent.sections.hobbies.title,
+  contact: portfolioContent.sections.contact.title,
+  bookmark: portfolioContent.sections.bookmark.title,
+  explore: portfolioContent.desktop.exploreTitle,
+  about: portfolioContent.sections.about.title,
 };
 
 const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
@@ -86,59 +88,68 @@ const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
 const icons: DesktopIconProps[] = [
   {
     name: "booknook",
-    label: "BOOKNOOK",
+    label: portfolioContent.sections.booknook.navigationLabel,
+    accessibleLabel: portfolioContent.sections.booknook.title,
     image: { x: 1172.5, y: 577, width: 183, height: 183 },
     text: { x: 1214, y: 725, width: 100, height: 28 },
     artworkScale: 0.9,
-    href: "https://booknook.cerencetinyurek.com",
+    href: portfolioContent.sections.booknook.url,
     hasPopup: false,
   },
   {
     name: "bookmark",
-    label: "BOOKMARK",
+    label: portfolioContent.sections.bookmark.navigationLabel,
+    accessibleLabel: portfolioContent.sections.bookmark.title,
     image: { x: 153.5, y: 628, width: 97, height: 97 },
     text: { x: 147, y: 725, width: 110, height: 28 },
     artworkScale: 0.9,
   },
   {
     name: "about",
-    label: "ABOUT",
+    label: portfolioContent.sections.about.navigationLabel,
+    accessibleLabel: portfolioContent.sections.about.title,
     image: { x: 150.2, y: 225, width: 103.594, height: 103.594 },
     text: { x: 170.92, y: 329.42, width: 62.169, height: 28.368 },
   },
   {
     name: "skills",
-    label: "SKILLS",
+    label: portfolioContent.sections.skills.navigationLabel,
+    accessibleLabel: portfolioContent.sections.skills.title,
     image: { x: 1212.2, y: 365.05, width: 103.594, height: 104.21 },
     text: { x: 1225.46, y: 457.54, width: 77.079, height: 27.132 },
   },
   {
     name: "experience",
-    label: "EXPERIENCE",
+    label: portfolioContent.sections.experience.navigationLabel,
+    accessibleLabel: portfolioContent.sections.experience.title,
     image: { x: 150.2, y: 370, width: 103.594, height: 103.594 },
     text: { x: 136.35, y: 457.54, width: 131.308, height: 37.386 },
   },
   {
     name: "hobbies",
-    label: "HOBIES",
+    label: portfolioContent.sections.hobbies.navigationLabel,
+    accessibleLabel: portfolioContent.sections.hobbies.title,
     image: { x: 1212.2, y: 503.6, width: 103.594, height: 103.594 },
     text: { x: 1225.63, y: 593.07, width: 76.736, height: 48.03 },
   },
   {
     name: "project",
-    label: "PROJECT",
+    label: portfolioContent.sections.project.navigationLabel,
+    accessibleLabel: portfolioContent.sections.project.title,
     image: { x: 150.2, y: 511, width: 103.594, height: 103.594 },
     text: { x: 154.34, y: 593.07, width: 95.32, height: 36.474 },
   },
   {
     name: "contact",
-    label: "CONTACT",
+    label: portfolioContent.sections.contact.navigationLabel,
+    accessibleLabel: portfolioContent.sections.contact.title,
     image: { x: 1212.2, y: 226.38, width: 103.594, height: 103.594 },
     text: { x: 1222.55, y: 329.42, width: 82.907, height: 73.86 },
   },
   {
     name: "meow",
-    label: "MEOW",
+    label: portfolioContent.desktop.meowLabel,
+    accessibleLabel: portfolioContent.desktop.meowLabel,
     image: { x: 1203.015, y: 769.532, width: 123.051, height: 123.051 },
     text: { x: 1237, y: 867, width: 56, height: 22 },
   },
@@ -230,7 +241,7 @@ export default function DesktopScreen() {
       <div className="desktop-viewport">
         <div
           className="desktop-canvas"
-          aria-label="Ceren’s portfolio desktop">
+          aria-label={portfolioContent.accessibility.desktopLabel}>
           <div
             className="desktop-outer-frame absolute"
             style={{ left: 55, top: 68.5, width: 1330, height: 858.211 }}

@@ -2,6 +2,7 @@ type Rect = { x: number; y: number; width: number; height: number };
 export type DesktopIconProps = {
   name: string;
   label: string;
+  accessibleLabel?: string;
   image: Rect;
   text: Rect;
   artworkMaxSize?: number;
@@ -11,8 +12,8 @@ export type DesktopIconProps = {
   hasPopup?: boolean;
 };
 
-export default function DesktopIcon({ name, label, image, text, artworkMaxSize, artworkScale, onOpen, href, hasPopup = true }: DesktopIconProps) {
-  const accessibleName = name === "project" ? "Projects" : name[0].toUpperCase() + name.slice(1);
+export default function DesktopIcon({ name, label, accessibleLabel, image, text, artworkMaxSize, artworkScale, onOpen, href, hasPopup = true }: DesktopIconProps) {
+  const accessibleName = accessibleLabel ?? label;
   const artworkWidth = artworkMaxSize ?? image.width;
   const artworkHeight = artworkMaxSize ?? image.height;
   const hitArea = {
