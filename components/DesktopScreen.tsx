@@ -6,63 +6,26 @@ import PortfolioCard from "./PortfolioCard";
 import RetroPopup, { type PopupKind } from "./RetroPopup";
 import AboutPolaroid from "./AboutPolaroid";
 import DesktopWindow, { type MobileWindowPlacement, type WindowAnchor } from "./DesktopWindow";
-import ExploreButton from "./ExploreButton";
 import ExploreWindow from "./ExploreWindow";
 import KirpikAnimation from "./KirpikAnimation";
 import MobileKirpikAnimation, { type MobileKirpikPhase } from "./MobileKirpikAnimation";
 import { portfolioContent } from "../content/portfolio";
+
 type WindowKind = PopupKind | "explore" | "about";
+type NavigationIcon = DesktopIconProps & { windowKind?: WindowKind };
+
 const iconSelector = (label: string) => `button[aria-label="${label}"]`;
 const windowAnchors: Record<WindowKind, WindowAnchor> = {
-  project: {
-    selector: iconSelector(portfolioContent.sections.project.title),
-    side: "right",
-    gap: 20,
-    vertical: -0.46,
-  },
-  experience: {
-    selector: iconSelector(portfolioContent.sections.experience.title),
-    side: "right",
-    gap: 26,
-    vertical: -0.3,
-  },
-  skills: {
-    selector: iconSelector(portfolioContent.sections.skills.title),
-    side: "left",
-    gap: 50,
-    vertical: -0.24,
-  },
-  hobbies: {
-    selector: iconSelector(portfolioContent.sections.hobbies.title),
-    side: "left",
-    gap: 30,
-    vertical: -0.18,
-  },
-  contact: {
-    selector: iconSelector(portfolioContent.sections.contact.title),
-    side: "left",
-    gap: 6,
-    vertical: -0.52,
-  },
-  bookmark: {
-    selector: iconSelector(portfolioContent.sections.bookmark.title),
-    side: "right",
-    gap: 24,
-    vertical: -0.08,
-  },
-  explore: {
-    selector: iconSelector(portfolioContent.desktop.exploreTitle),
-    side: "right",
-    gap: 14,
-    vertical: -0.66,
-  },
-  about: {
-    selector: iconSelector(portfolioContent.sections.about.title),
-    side: "right",
-    gap: 18,
-    vertical: -0.24,
-  },
+  project: { selector: iconSelector(portfolioContent.sections.project.title), side: "right", gap: 20, vertical: -0.46 },
+  experience: { selector: iconSelector(portfolioContent.sections.experience.title), side: "right", gap: 26, vertical: -0.3 },
+  skills: { selector: iconSelector(portfolioContent.sections.skills.title), side: "left", gap: 50, vertical: -0.24 },
+  hobbies: { selector: iconSelector(portfolioContent.sections.hobbies.title), side: "left", gap: 30, vertical: -0.18 },
+  contact: { selector: iconSelector(portfolioContent.sections.contact.title), side: "left", gap: 6, vertical: -0.52 },
+  bookmark: { selector: iconSelector(portfolioContent.sections.bookmark.title), side: "right", gap: 24, vertical: -0.08 },
+  explore: { selector: iconSelector(portfolioContent.desktop.exploreTitle), side: "right", gap: 14, vertical: -0.66 },
+  about: { selector: iconSelector(portfolioContent.sections.about.title), side: "right", gap: 18, vertical: -0.24 },
 };
+
 const windowTitles: Record<WindowKind, string> = {
   project: portfolioContent.sections.project.title,
   experience: portfolioContent.sections.experience.title,
@@ -85,109 +48,89 @@ const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
   explore: { x: 0.42, y: 0.68 },
 };
 
-const icons: DesktopIconProps[] = [
-  {
-    name: "booknook",
-    label: portfolioContent.sections.booknook.navigationLabel,
-    accessibleLabel: portfolioContent.sections.booknook.title,
-    image: { x: 1172.5, y: 577, width: 183, height: 183 },
-    text: { x: 1214, y: 725, width: 100, height: 28 },
-    artworkScale: 0.9,
-    href: portfolioContent.sections.booknook.url,
-    hasPopup: false,
-  },
-  {
-    name: "bookmark",
-    label: portfolioContent.sections.bookmark.navigationLabel,
-    accessibleLabel: portfolioContent.sections.bookmark.title,
-    image: { x: 153.5, y: 628, width: 97, height: 97 },
-    text: { x: 147, y: 725, width: 110, height: 28 },
-    artworkScale: 0.9,
-  },
+const leftNavigationIcons: NavigationIcon[] = [
   {
     name: "about",
     label: portfolioContent.sections.about.navigationLabel,
     accessibleLabel: portfolioContent.sections.about.title,
-    image: { x: 150.2, y: 225, width: 103.594, height: 103.594 },
-    text: { x: 170.92, y: 329.42, width: 62.169, height: 28.368 },
-  },
-  {
-    name: "skills",
-    label: portfolioContent.sections.skills.navigationLabel,
-    accessibleLabel: portfolioContent.sections.skills.title,
-    image: { x: 1212.2, y: 365.05, width: 103.594, height: 104.21 },
-    text: { x: 1225.46, y: 457.54, width: 77.079, height: 27.132 },
+    windowKind: "about",
   },
   {
     name: "experience",
     label: portfolioContent.sections.experience.navigationLabel,
     accessibleLabel: portfolioContent.sections.experience.title,
-    image: { x: 150.2, y: 370, width: 103.594, height: 103.594 },
-    text: { x: 136.35, y: 457.54, width: 131.308, height: 37.386 },
-  },
-  {
-    name: "hobbies",
-    label: portfolioContent.sections.hobbies.navigationLabel,
-    accessibleLabel: portfolioContent.sections.hobbies.title,
-    image: { x: 1212.2, y: 503.6, width: 103.594, height: 103.594 },
-    text: { x: 1225.63, y: 593.07, width: 76.736, height: 48.03 },
+    windowKind: "experience",
   },
   {
     name: "project",
     label: portfolioContent.sections.project.navigationLabel,
     accessibleLabel: portfolioContent.sections.project.title,
-    image: { x: 150.2, y: 511, width: 103.594, height: 103.594 },
-    text: { x: 154.34, y: 593.07, width: 95.32, height: 36.474 },
+    windowKind: "project",
   },
+  {
+    name: "bookmark",
+    label: portfolioContent.sections.bookmark.navigationLabel,
+    accessibleLabel: portfolioContent.sections.bookmark.title,
+    windowKind: "bookmark",
+    imageSize: "h-12 w-12 sm:h-12 sm:w-12 xl:h-[4.25rem] xl:w-[4.25rem]",
+  },
+];
+
+const rightNavigationIcons: NavigationIcon[] = [
   {
     name: "contact",
     label: portfolioContent.sections.contact.navigationLabel,
     accessibleLabel: portfolioContent.sections.contact.title,
-    image: { x: 1212.2, y: 226.38, width: 103.594, height: 103.594 },
-    text: { x: 1222.55, y: 329.42, width: 82.907, height: 73.86 },
+    windowKind: "contact",
+  },
+  {
+    name: "skills",
+    label: portfolioContent.sections.skills.navigationLabel,
+    accessibleLabel: portfolioContent.sections.skills.title,
+    windowKind: "skills",
+  },
+  {
+    name: "hobbies",
+    label: portfolioContent.sections.hobbies.navigationLabel,
+    accessibleLabel: portfolioContent.sections.hobbies.title,
+    windowKind: "hobbies",
+  },
+  {
+    name: "booknook",
+    label: portfolioContent.sections.booknook.navigationLabel,
+    accessibleLabel: portfolioContent.sections.booknook.title,
+    href: portfolioContent.sections.booknook.url,
+    openInNewTab: true,
+    hasPopup: false,
+    imageSize: "h-[4.5rem] w-[4.5rem] xl:h-[5.5rem] xl:w-[5.5rem]",
+    visualSize: "h-16 xl:h-20",
+    itemGap: "gap-0",
+    labelClassName: "-mt-1",
   },
   {
     name: "meow",
     label: portfolioContent.desktop.meowLabel,
     accessibleLabel: portfolioContent.desktop.meowLabel,
-    image: { x: 1203.015, y: 769.532, width: 123.051, height: 123.051 },
-    text: { x: 1237, y: 867, width: 56, height: 22 },
+    hasPopup: false,
+    placement: "col-start-2 row-start-5 md:col-auto md:row-auto",
+    imageSize: "h-11 w-16 sm:h-12 sm:w-18 xl:h-14 xl:w-20",
+    visualSize: "h-11 sm:h-12 xl:h-14",
+    itemGap: "gap-0",
+    labelClassName: "-mt-1",
   },
 ];
 
-function Artwork({
-  name,
-  x,
-  y,
-  width,
-  height,
-}: {
-  name: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}) {
-  const extension =
-    name === "checkerboard" || name === "flower" ? "webp" : "png";
-  return (
-    <img
-      className={`figma-image figma-artwork figma-artwork-${name}`}
-      src={`/images/${name}.${extension}`}
-      alt=""
-      draggable={false}
-      width={width}
-      height={height}
-      style={{ left: x, top: y, width, height }}
-    />
-  );
-}
+const mobileNavigationIcons = Array.from(
+  { length: Math.max(leftNavigationIcons.length, rightNavigationIcons.length) },
+  (_, index) => [leftNavigationIcons[index], rightNavigationIcons[index]],
+).flat().filter((icon): icon is NavigationIcon => Boolean(icon));
 
 export default function DesktopScreen() {
   const [windows, setWindows] = useState<WindowKind[]>([]);
   const [kirpikRun, setKirpikRun] = useState<number | null>(null);
   const [kirpikClosing, setKirpikClosing] = useState(false);
   const [mobileKirpikPhase, setMobileKirpikPhase] = useState<MobileKirpikPhase>("hidden");
+
   const advanceMobileKirpikState = useCallback(() => {
     setMobileKirpikPhase((current) => {
       if (current === "hidden") return "sitting";
@@ -197,8 +140,9 @@ export default function DesktopScreen() {
       return current;
     });
   }, []);
+
   const toggleKirpik = () => {
-    if (window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia("(max-width: 1023px)").matches) {
       advanceMobileKirpikState();
       return;
     }
@@ -209,22 +153,14 @@ export default function DesktopScreen() {
     }
     setKirpikClosing(true);
   };
+
   const removeKirpik = useCallback(() => {
     setKirpikRun(null);
     setKirpikClosing(false);
   }, []);
-  const activate = (kind: WindowKind) =>
-    setWindows((previous) =>
-      previous.at(-1) === kind
-        ? previous
-        : [...previous.filter((item) => item !== kind), kind],
-    );
-  const toggle = (kind: WindowKind) =>
-    setWindows((previous) =>
-      previous.includes(kind)
-        ? previous.filter((item) => item !== kind)
-        : [...previous, kind],
-    );
+  const activate = (kind: WindowKind) => setWindows((previous) => previous.at(-1) === kind ? previous : [...previous.filter((item) => item !== kind), kind]);
+  const toggle = (kind: WindowKind) => setWindows((previous) => previous.includes(kind) ? previous.filter((item) => item !== kind) : [...previous, kind]);
+
   useEffect(() => {
     if (windows.length === 0) return;
     const closeTopWindow = (event: PointerEvent) => {
@@ -236,141 +172,71 @@ export default function DesktopScreen() {
     document.addEventListener("pointerdown", closeTopWindow);
     return () => document.removeEventListener("pointerdown", closeTopWindow);
   }, [windows.length]);
+
   return (
     <>
-      <div className="desktop-viewport">
-        <div
-          className="desktop-canvas"
-          aria-label={portfolioContent.accessibility.desktopLabel}>
-          <div
-            className="desktop-outer-frame absolute"
-            style={{ left: 55, top: 68.5, width: 1330, height: 858.211 }}
-          />
-          <Artwork
-            name="bg-liquified"
-            x={62}
-            y={76.64}
-            width={1316}
-            height={800}
-          />
-          <div
-            className="desktop-topbar absolute border-solid"
-            style={{
-              left: 61,
-              top: 74.27,
-              width: 1318,
-              height: 35.667,
-              background: "rgba(234,233,233,.3)",
-              borderWidth: 1.189,
-              borderColor: "rgba(239,219,219,.92)",
-              backdropFilter: "blur(17.834px)",
-            }}
-          />
-          <div
-            className="desktop-taskbar absolute"
-            style={{
-              left: 61,
-              top: 856.51,
-              width: 1318,
-              height: 60.312,
-            }}
-          />
-          {icons.map((icon) => (
-            <DesktopIcon
-              key={icon.name}
-              {...icon}
-              hasPopup={icon.hasPopup ?? icon.name !== "meow"}
-              onOpen={
-                icon.href
-                  ? undefined
-                  : icon.name === "meow"
-                  ? toggleKirpik
-                  : () => toggle(icon.name as PopupKind | "about")
-              }
-            />
-          ))}
-          <Artwork
-            name="close"
-            x={1341.5}
-            y={81.4}
-            width={22.918}
-            height={22.27}
-          />
-          <Artwork
-            name="minimize"
-            x={1280.86}
-            y={81.4}
-            width={22.973}
-            height={22.218}
-          />
-          <Artwork
-            name="maximize"
-            x={1311.78}
-            y={81.4}
-            width={24.902}
-            height={21.457}
-          />
-          <ExploreButton onOpen={() => toggle("explore")} />
-          <PortfolioCard />
-          <KirpikAnimation
-            runId={kirpikRun}
-            closing={kirpikClosing}
-            onClosed={removeKirpik}
-          />
-          <MobileKirpikAnimation
-            phase={mobileKirpikPhase}
-            onAdvance={advanceMobileKirpikState}
-            onClosed={() => setMobileKirpikPhase("hidden")}
-          />
-          <Artwork
-            name="flower"
-            x={82.96}
-            y={71.89}
-            width={109.379}
-            height={109.379}
-          />
+      <section className="relative flex h-full max-h-[1025px] w-full max-w-[992px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)]" aria-label={portfolioContent.accessibility.desktopLabel}>
+        <header className="relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-[#efdbdb]/90 bg-white/30 px-2 backdrop-blur-xl sm:h-9">
+          <img className="mr-auto h-14 w-14 translate-y-5 object-contain sm:h-16 sm:w-16 sm:translate-y-6 lg:h-20 lg:w-20" src="/images/flower.webp" alt="" draggable={false} />
+          <img className="h-[18px] w-auto object-contain sm:h-[22px]" src="/images/window-controls.png" alt="" draggable={false} />
+        </header>
+
+        <div className="relative min-h-0 flex-1 overflow-hidden">
+          <img className="absolute inset-0 h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} />
+          <div className="relative z-10 grid h-full min-h-0 grid-rows-[minmax(8rem,auto)_minmax(0,1fr)] gap-2 px-5 py-3 sm:grid-rows-[minmax(10rem,auto)_minmax(0,1fr)] sm:px-8 md:grid-cols-[7rem_minmax(0,1fr)_7rem] md:grid-rows-1 md:justify-center md:gap-x-5 md:px-8 md:py-6 lg:grid-cols-[12rem_minmax(0,1fr)_12rem] lg:py-8">
+            <div className="flex min-w-0 items-center px-4 pt-8 sm:pt-10 md:col-start-2 md:row-start-1 md:px-0 md:pt-12 lg:pt-10">
+              <PortfolioCard />
+            </div>
+            <nav className="grid min-h-0 grid-cols-2 grid-rows-5 gap-x-5 gap-y-1 md:hidden" aria-label="Portfolio navigation">
+              {mobileNavigationIcons.map((icon) => (
+                <DesktopIcon key={icon.name} {...icon} onOpen={icon.name === "meow" ? toggleKirpik : icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
+              ))}
+            </nav>
+            <nav className="hidden min-h-0 grid-rows-4 gap-y-3 md:col-start-1 md:row-start-1 md:grid" aria-label="Portfolio navigation left">
+              {leftNavigationIcons.map((icon) => (
+                <DesktopIcon key={icon.name} {...icon} onOpen={icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
+              ))}
+            </nav>
+            <nav className="hidden min-h-0 grid-rows-5 gap-y-3 md:col-start-3 md:row-start-1 md:grid" aria-label="Portfolio navigation right">
+              {rightNavigationIcons.map((icon) => (
+                <DesktopIcon key={icon.name} {...icon} onOpen={icon.name === "meow" ? toggleKirpik : icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
+              ))}
+            </nav>
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 hidden h-20 lg:block">
+            <KirpikAnimation runId={kirpikRun} closing={kirpikClosing} onClosed={removeKirpik} />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 z-20 lg:hidden">
+            <MobileKirpikAnimation phase={mobileKirpikPhase} onAdvance={advanceMobileKirpikState} onClosed={() => setMobileKirpikPhase("hidden")} />
+          </div>
         </div>
-      </div>
+
+        <footer className="relative z-20 h-8 shrink-0 border-t-2 border-white/90 bg-[#f4e7a1] shadow-[0_-3px_10px_rgba(121,73,124,.08)] sm:h-10">
+          <div className="grid h-full grid-cols-2 gap-x-5 px-5 sm:px-8 md:grid-cols-[7rem_minmax(0,1fr)_7rem] md:gap-x-5 lg:grid-cols-[12rem_minmax(0,1fr)_12rem]">
+            <div className="flex items-center justify-center">
+            <DesktopIcon
+              name="explore"
+              label=""
+              accessibleLabel={portfolioContent.desktop.exploreTitle}
+              imageSrc="/images/explore.png"
+              hoverImageSrc="/images/explore-hover.png"
+              imageSize="h-[30px] w-auto sm:h-9"
+              visualSize="h-[30px] sm:h-9"
+              onOpen={() => toggle("explore")}
+            />
+            </div>
+          </div>
+        </footer>
+      </section>
+
       {windows.map((kind, index) => (
-        <DesktopWindow
-          key={kind}
-          label={windowTitles[kind]}
-          anchor={windowAnchors[kind]}
-          mobilePlacement={mobileWindowPlacements[kind]}
-          zIndex={100 + index}
-          onActivate={() => activate(kind)}
-          className={
-            kind === "about"
-              ? "desktop-window-about"
-              : kind === "explore"
-                ? "desktop-window-explore"
-                : "desktop-window-popup"
-          }>
+        <DesktopWindow key={kind} label={windowTitles[kind]} anchor={windowAnchors[kind]} mobilePlacement={mobileWindowPlacements[kind]} zIndex={100 + index} onActivate={() => activate(kind)} className={kind === "about" ? "desktop-window-about" : kind === "explore" ? "desktop-window-explore" : "desktop-window-popup"}>
           {kind === "about" ? (
-            <AboutPolaroid
-              onClose={() =>
-                setWindows((previous) =>
-                  previous.filter((item) => item !== kind),
-                )
-              }
-            />
+            <AboutPolaroid onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           ) : kind === "explore" ? (
-            <ExploreWindow
-              onClose={() =>
-                setWindows((previous) =>
-                  previous.filter((item) => item !== kind),
-                )
-              }
-            />
+            <ExploreWindow onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           ) : (
-            <RetroPopup
-              kind={kind}
-              onClose={() =>
-                setWindows((previous) =>
-                  previous.filter((item) => item !== kind),
-                )
-              }
-            />
+            <RetroPopup kind={kind} onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           )}
         </DesktopWindow>
       ))}

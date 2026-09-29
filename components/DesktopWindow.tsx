@@ -14,7 +14,10 @@ export default function DesktopWindow({ label, anchor, mobilePlacement, zIndex, 
     return { x: Math.max(8, Math.min(point.x, window.innerWidth - rect.width - 8)), y: Math.max(8, Math.min(point.y, window.innerHeight - rect.height - 8)) };
   };
   useLayoutEffect(() => {
-    const anchorElement = document.querySelector<HTMLElement>(anchor.selector);
+    const anchorElement = Array.from(document.querySelectorAll<HTMLElement>(anchor.selector)).find((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    });
     const anchorRect = anchorElement?.getBoundingClientRect();
     const frameRect = frame.current!.getBoundingClientRect();
     const isMobile = window.matchMedia("(max-width: 768px)").matches;

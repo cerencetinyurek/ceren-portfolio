@@ -14,9 +14,6 @@ const STRETCH_DURATION = 1000;
 const WALK_FRAME_TIME = 145;
 // State scaling grows around the bottom center. These coordinates keep the
 // larger sitting pose clear of Meow and the sleeping pose clear of Explore.
-const START_X = 1102;
-const END_X = 365;
-
 type KirpikPhase = "idle-start" | "walking" | "idle-end" | "stretching" | "sleeping";
 
 type KirpikAnimationProps = {
@@ -48,6 +45,9 @@ export default function KirpikAnimation({ runId, closing, onClosed }: KirpikAnim
 
     let animationFrame = 0;
     const startedAt = performance.now();
+    const trackWidth = spriteRef.current?.parentElement?.clientWidth ?? 1200;
+    const startX = Math.max(140, trackWidth - 150);
+    const endX = Math.max(120, Math.min(320, trackWidth * 0.26));
 
     const show = (nextPhase: KirpikPhase, nextFrame: number) => {
       if (currentPhaseRef.current !== nextPhase) {
@@ -64,7 +64,7 @@ export default function KirpikAnimation({ runId, closing, onClosed }: KirpikAnim
     currentFrameRef.current = IDLE_FRAME;
     setPhase("idle-start");
     setFrame(IDLE_FRAME);
-    if (spriteRef.current) spriteRef.current.style.transform = `translate3d(${START_X}px, 0, 0)`;
+    if (spriteRef.current) spriteRef.current.style.transform = `translate3d(${startX}px, 0, 0)`;
 
     const animate = (now: number) => {
       if (closingRef.current) return;
@@ -79,12 +79,12 @@ export default function KirpikAnimation({ runId, closing, onClosed }: KirpikAnim
       } else if (elapsed < secondIdleStart) {
         const walkingElapsed = elapsed - walkStart;
         const progress = Math.min(walkingElapsed / WALK_DURATION, 1);
-        const x = START_X + (END_X - START_X) * progress;
+        const x = startX + (endX - startX) * progress;
         const frameIndex = Math.floor(walkingElapsed / WALK_FRAME_TIME) % WALK_FRAMES.length;
         if (spriteRef.current) spriteRef.current.style.transform = `translate3d(${x}px, 0, 0)`;
         show("walking", WALK_FRAMES[frameIndex]);
       } else if (elapsed < stretchStart) {
-        if (spriteRef.current) spriteRef.current.style.transform = `translate3d(${END_X}px, 0, 0)`;
+        if (spriteRef.current) spriteRef.current.style.transform = `translate3d(${endX}px, 0, 0)`;
         show("idle-end", IDLE_FRAME);
       } else if (elapsed < sleepStart) {
         const stretchingElapsed = elapsed - stretchStart;

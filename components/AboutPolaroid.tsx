@@ -10,6 +10,8 @@ export default function AboutPolaroid({ onClose }: { onClose: () => void }) {
         <span className="polaroid-face polaroid-back" aria-hidden={!flipped}><span className="polaroid-handwriting" data-asset-slot="back-handwriting" /></span>
       </span>
     </button>
-    <button type="button" className="about-close" aria-label={portfolioContent.accessibility.closeAbout} onClick={event => { event.stopPropagation(); onClose(); }}><span aria-hidden="true">×</span></button>
+    <button type="button" className="about-close" aria-label={portfolioContent.accessibility.closeAbout} onClick={event => { event.stopPropagation(); onClose(); }}>
+      <img src="/images/window-close.png" alt="" draggable={false} aria-hidden="true" />
+    </button>
   </section>;
 }
