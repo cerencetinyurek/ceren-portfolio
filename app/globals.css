@@ -452,12 +452,10 @@ body {
 .portfolio-card-layer {
   position: absolute;
   z-index: 2;
-  left: 442.943px;
-  top: 337.015px;
-  width: 554.029px;
-  height: 311.493px;
-  transform: scale(0.9);
-  transform-origin: center;
+  left: 330px;
+  top: 310px;
+  width: 780px;
+  height: 405px;
 }
 .portfolio-cluster {
   display: contents;
@@ -651,10 +649,6 @@ body {
     box-sizing: border-box;
     border: 7px solid #f4e7a1;
     pointer-events: none;
-  }
-
-  .portfolio-card-layer {
-    transform: scale(1.42, 1.32);
   }
 
   .portfolio-glass {
@@ -1077,20 +1071,20 @@ body {
   }
 
   .portfolio-card-layer {
-    left: 8.34% !important;
-    top: 15.82% !important;
-    width: 79.32% !important;
-    height: 66.84% !important;
+    left: 10% !important;
+    top: 16% !important;
+    width: 80% !important;
+    height: 68% !important;
     transform: none;
   }
 
   .portfolio-cluster {
     display: block;
     position: absolute;
-    left: 4.62%;
-    top: 8.53%;
-    width: 95.38%;
-    height: 36.35%;
+    left: 4%;
+    top: 8%;
+    width: 92%;
+    height: clamp(190px, 30dvh, 250px);
   }
 
   .portfolio-name,
@@ -1105,13 +1099,13 @@ body {
   .portfolio-name {
     top: 13.74% !important;
     height: auto !important;
-    font-size: clamp(36px, 10vw, 41px) !important;
+    font-size: clamp(28px, 8vw, 36px) !important;
   }
 
   .portfolio-title {
     top: 37.41% !important;
     height: auto !important;
-    font-size: clamp(46px, 13vw, 52px) !important;
+    font-size: clamp(34px, 10vw, 44px) !important;
   }
 
   .portfolio-subtitle {
@@ -1319,8 +1313,6 @@ body {
 }
 
 @media (max-width: 768px) and (min-height: 760px) {
-  .portfolio-cluster { left: 1.94%; top: 9.06%; width: 96.31%; }
-  .portfolio-card-layer { left: 8.34% !important; top: 15.82% !important; }
 
   .explore-button { left: 0 !important; bottom: 1.07% !important; }
   .desktop-icon-art[data-icon="meow"] { right: 4.18% !important; bottom: 2.66% !important; }
@@ -1331,13 +1323,23 @@ body {
   .desktop-icon-item:not([data-icon="meow"]) {
     position: absolute;
     z-index: 2;
-    width: 26%;
+    width: 30% !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 6px;
     transform: translateX(-50%);
+    translate: none;
+  }
+
+  .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 54px;
+    flex: none;
   }
 
   .desktop-icon-item:not([data-icon="meow"]) .desktop-icon-art {
@@ -1387,73 +1389,36 @@ body {
   .desktop-icon-item[data-icon="experience"],
   .desktop-icon-item[data-icon="project"],
   .desktop-icon-item[data-icon="bookmark"] {
-    left: 14.22%;
+    left: 23% !important;
   }
 
   .desktop-icon-item[data-icon="contact"],
   .desktop-icon-item[data-icon="skills"],
   .desktop-icon-item[data-icon="hobbies"],
   .desktop-icon-item[data-icon="booknook"] {
-    left: 86.65%;
+    left: 77% !important;
   }
 
   .desktop-icon-item[data-icon="about"],
   .desktop-icon-item[data-icon="contact"] {
-    top: 43.8%;
+    top: 40% !important;
   }
 
   .desktop-icon-item[data-icon="experience"],
   .desktop-icon-item[data-icon="skills"] {
-    top: 55.8%;
+    top: 51% !important;
   }
 
   .desktop-icon-item[data-icon="project"],
   .desktop-icon-item[data-icon="hobbies"] {
-    top: 66.9%;
+    top: 62% !important;
   }
 
   .desktop-icon-item[data-icon="bookmark"] {
-    top: 77.6%;
+    top: 73% !important;
   }
 
   .desktop-icon-item[data-icon="booknook"] {
-    top: calc(77.6% - clamp(29.75px, 7.86vw, 30.91px) + 20px);
+    top: 73% !important;
   }
-
-}
-
-@media (max-width: 768px) and (min-height: 760px) {
-  .desktop-icon-item[data-icon="about"],
-  .desktop-icon-item[data-icon="experience"],
-  .desktop-icon-item[data-icon="project"],
-  .desktop-icon-item[data-icon="bookmark"] {
-    left: 12.42%;
-  }
-
-  .desktop-icon-item[data-icon="contact"],
-  .desktop-icon-item[data-icon="skills"],
-  .desktop-icon-item[data-icon="hobbies"],
-  .desktop-icon-item[data-icon="booknook"] {
-    left: 84.45%;
-  }
-
-  .desktop-icon-item[data-icon="about"],
-  .desktop-icon-item[data-icon="contact"] {
-    top: 45.1%;
-  }
-
-  .desktop-icon-item[data-icon="experience"],
-  .desktop-icon-item[data-icon="skills"] {
-    top: 56.5%;
-  }
-
-  .desktop-icon-item[data-icon="project"],
-  .desktop-icon-item[data-icon="hobbies"] {
-    top: 67.6%;
-  }
-
-  .desktop-icon-item[data-icon="bookmark"] {
-    top: 77.6%;
-  }
-
 }
