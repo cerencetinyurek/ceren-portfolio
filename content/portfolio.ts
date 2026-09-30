@@ -156,8 +156,8 @@ export const portfolioContent = {
         items: [
           {
             label: "Email",
-            value: "cerencetinyurek@gmail.com",
-            url: "mailto:cerencetinyurek@gmail.com",
+            value: "contact@cerencetinyurek.com",
+            url: "mailto:contact@cerencetinyurek.com",
           },
           {
             label: "LinkedIn",
