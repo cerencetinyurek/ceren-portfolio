@@ -176,9 +176,12 @@ export default function DesktopScreen() {
   return (
     <>
       <section className="relative flex h-full max-h-[1025px] w-full max-w-[1200px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)] md:scale-90" aria-label={portfolioContent.accessibility.desktopLabel}>
-        <img className="absolute inset-0 h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} />
-        <header className="relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-white/20 bg-white/15 px-2 shadow-[inset_0_-1px_0_rgba(255,255,255,.16)] backdrop-blur-md sm:h-9">
-          <img className="mr-auto h-14 w-14 translate-y-5 object-contain sm:h-16 sm:w-16 sm:translate-y-6 lg:h-20 lg:w-20" src="/images/flower.webp" alt="" draggable={false} />
+        <picture className="absolute inset-0 block">
+          <source media="(max-width: 768px)" srcSet="/images/bg-liquified-mobile.webp" type="image/webp" />
+          <img className="h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} fetchPriority="high" decoding="async" />
+        </picture>
+        <header className="desktop-titlebar relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-white/20 bg-white/15 px-2 shadow-[inset_0_-1px_0_rgba(255,255,255,.16)] backdrop-blur-md sm:h-9">
+          <img className="mr-auto h-14 w-14 translate-y-5 object-contain sm:h-16 sm:w-16 sm:translate-y-6 lg:h-20 lg:w-20" src="/images/flower-optimized.webp" alt="" draggable={false} width={256} height={256} decoding="async" />
           <img className="h-[18px] w-auto object-contain sm:h-[22px]" src="/images/window-controls.png" alt="" draggable={false} />
         </header>
 

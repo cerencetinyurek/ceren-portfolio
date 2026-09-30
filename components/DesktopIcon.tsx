@@ -20,8 +20,8 @@ export default function DesktopIcon({ name, label, accessibleLabel, onOpen, href
   return (
     <div className={`group relative z-10 flex min-w-0 flex-col items-center justify-center ${itemGap} ${placement}`} data-icon={name}>
       <span className={`relative flex w-full items-center justify-center ${visualSize}`} aria-hidden="true">
-        <img className={`${imageSize} object-contain select-none ${hoverImageSrc ? "transition-opacity duration-200 group-hover:opacity-0" : ""}`} data-icon={name} src={imageSrc ?? `/images/${name}.png`} alt="" draggable={false} />
-        {hoverImageSrc ? <img className={`${imageSize} absolute object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100`} src={hoverImageSrc} alt="" draggable={false} /> : null}
+        <img className={`${imageSize} object-contain select-none ${hoverImageSrc ? "transition-opacity duration-200 group-hover:opacity-0" : ""}`} data-icon={name} src={imageSrc ?? `/images/${name}-optimized.webp`} alt="" draggable={false} decoding="async" />
+        {hoverImageSrc ? <img className={`${imageSize} absolute object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100`} src={hoverImageSrc} alt="" draggable={false} loading="lazy" decoding="async" /> : null}
       </span>
       {label ? <span className={`font-pixel text-[10px] leading-none whitespace-nowrap text-black sm:text-xs xl:text-base ${labelClassName}`}>{label}</span> : null}
       {href ? (

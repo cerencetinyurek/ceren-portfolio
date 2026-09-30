@@ -265,6 +265,9 @@ body {
   .desktop-window-about { width: min(60vw,190px,calc((100dvh - 24px) * .79)); padding: 8px; }
   .popup-close,
   .explore-close { min-width: 42px; min-height: 42px; }
+  .desktop-titlebar,
+  .portfolio-card-panel { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .sticker-float { animation: none; }
   .flower-cursor { display: none !important; }
   html.flower-cursor-active,
   html.flower-cursor-active * { cursor: auto !important; }

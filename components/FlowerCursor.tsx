@@ -7,6 +7,7 @@ export default function FlowerCursor() {
   useEffect(() => {
     const element = layer.current!;
     const media = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    if (!media.matches || navigator.maxTouchPoints > 0) return;
     const flowers = Array.from(element.querySelectorAll<HTMLImageElement>("img"));
     const points = flowers.map(() => ({ x: 0, y: 0 }));
     let enabled = false, visible = false, ready = false, frame = 0, previous = 0;
@@ -74,8 +75,8 @@ export default function FlowerCursor() {
     };
   }, []);
   return <div ref={layer} popover="manual" className="flower-cursor" aria-hidden="true">
-    <img src="/images/flower.webp" alt="" draggable={false} />
-    <img src="/images/cursor-purple.webp" alt="" draggable={false} />
-    <img src="/images/cursor-white.webp" alt="" draggable={false} />
+    <img src="/images/flower-optimized.webp" alt="" draggable={false} loading="lazy" />
+    <img src="/images/cursor-purple.webp" alt="" draggable={false} loading="lazy" />
+    <img src="/images/cursor-white.webp" alt="" draggable={false} loading="lazy" />
   </div>;
 }

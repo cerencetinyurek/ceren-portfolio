@@ -12,7 +12,7 @@ const stickers = [
 export default function PortfolioCard() {
   return (
     <div className="portfolio-card-shell relative mx-auto flex w-[86%] max-w-sm scale-[0.92] items-center justify-center sm:max-w-xl lg:max-w-3xl">
-      <div className="relative z-[2] flex aspect-[780/405] w-full items-center justify-center border border-white/75 bg-gradient-to-br from-[#d9d3fa]/60 to-[#eecae8]/45 px-4 text-center shadow-[0_12px_28px_rgba(121,73,124,.16),0_0_20px_rgba(224,160,210,.14),inset_0_1px_1px_rgba(255,255,255,.55)] backdrop-blur-[9px] sm:px-8">
+      <div className="portfolio-card-panel relative z-[2] flex aspect-[780/405] w-full items-center justify-center border border-white/75 bg-gradient-to-br from-[#d9d3fa]/60 to-[#eecae8]/45 px-4 text-center shadow-[0_12px_28px_rgba(121,73,124,.16),0_0_20px_rgba(224,160,210,.14),inset_0_1px_1px_rgba(255,255,255,.55)] backdrop-blur-[9px] sm:px-8">
         <div className="flex w-fit flex-col">
           <p className="m-0 text-left font-fredoka text-2xl leading-none text-black sm:text-4xl lg:text-4xl xl:text-5xl">{portfolioContent.hero.ownerName}</p>
           <h1 className="m-0 mt-3 font-pixel text-4xl leading-none font-normal whitespace-nowrap text-[#79497c] sm:mt-5 sm:text-6xl lg:text-7xl xl:text-8xl">{portfolioContent.hero.title}</h1>

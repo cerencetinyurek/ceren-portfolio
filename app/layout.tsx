@@ -14,7 +14,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://cerencetinyurek.com"),
   title: "Ceren's Portfolio",
-  description: "Biomedical engineer / researcher / maker",
+  description: "Ceren Çetinyürek's biomedical engineering portfolio featuring medical devices, biomaterials, tissue engineering, and research projects.",
+  keywords: [
+    "Ceren Çetinyürek",
+    "biomedical engineer",
+    "biomedical engineering portfolio",
+    "medical devices",
+    "biomaterials",
+    "tissue engineering",
+    "jawbone regeneration",
+    "MRI classification",
+    "medical device management",
+    "biomedical research",
+    "medtech",
+  ],
   alternates: {
     canonical: "https://cerencetinyurek.com",
   },
@@ -37,12 +50,12 @@ export const metadata: Metadata = {
     url: "https://cerencetinyurek.com",
     siteName: "Ceren's Portfolio",
     title: "Ceren's Portfolio",
-    description: "Biomedical engineer / researcher / maker",
+    description: "Ceren Çetinyürek's biomedical engineering portfolio featuring medical devices, biomaterials, tissue engineering, and research projects.",
   },
   twitter: {
     card: "summary",
     title: "Ceren's Portfolio",
-    description: "Biomedical engineer / researcher / maker",
+    description: "Ceren Çetinyürek's biomedical engineering portfolio featuring medical devices, biomaterials, tissue engineering, and research projects.",
   },
 };
 
@@ -55,7 +68,9 @@ const personStructuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body suppressHydrationWarning>
+  return <html lang="en"><head>
+    <link rel="preload" href="/images/bg-liquified-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
+  </head><body suppressHydrationWarning>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }} />
     {children}<FlowerCursor />
   </body></html>;
