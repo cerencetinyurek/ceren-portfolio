@@ -72,7 +72,7 @@ const leftNavigationIcons: NavigationIcon[] = [
     label: portfolioContent.sections.bookmark.navigationLabel,
     accessibleLabel: portfolioContent.sections.bookmark.title,
     windowKind: "bookmark",
-    imageSize: "h-12 w-12 sm:h-12 sm:w-12 xl:h-[4.25rem] xl:w-[4.25rem]",
+    imageSize: "h-12 w-12 sm:h-12 sm:w-12 md:h-11 md:w-11 xl:h-15 xl:w-15",
   },
 ];
 
@@ -102,8 +102,8 @@ const rightNavigationIcons: NavigationIcon[] = [
     href: portfolioContent.sections.booknook.url,
     openInNewTab: true,
     hasPopup: false,
-    imageSize: "h-[4.5rem] w-[4.5rem] xl:h-[5.5rem] xl:w-[5.5rem]",
-    visualSize: "h-16 xl:h-20",
+    imageSize: "h-20 w-20 xl:h-24 xl:w-24",
+    visualSize: "h-20 xl:h-24",
     itemGap: "gap-0",
     labelClassName: "-mt-1",
   },
@@ -113,8 +113,8 @@ const rightNavigationIcons: NavigationIcon[] = [
     accessibleLabel: portfolioContent.desktop.meowLabel,
     hasPopup: false,
     placement: "col-start-2 row-start-5 md:col-auto md:row-auto",
-    imageSize: "h-11 w-16 sm:h-12 sm:w-18 xl:h-14 xl:w-20",
-    visualSize: "h-11 sm:h-12 xl:h-14",
+    imageSize: "h-11 w-16 sm:h-12 sm:w-18 md:h-16 md:w-24 xl:h-18 xl:w-28",
+    visualSize: "h-11 sm:h-12 md:h-16 xl:h-18",
     itemGap: "gap-0",
     labelClassName: "-mt-1",
   },
@@ -175,14 +175,14 @@ export default function DesktopScreen() {
 
   return (
     <>
-      <section className="relative flex h-full max-h-[1025px] w-full max-w-[992px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)]" aria-label={portfolioContent.accessibility.desktopLabel}>
-        <header className="relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-[#efdbdb]/90 bg-white/30 px-2 backdrop-blur-xl sm:h-9">
+      <section className="relative flex h-full max-h-[1025px] w-full max-w-[1200px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)] md:scale-90" aria-label={portfolioContent.accessibility.desktopLabel}>
+        <img className="absolute inset-0 h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} />
+        <header className="relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-white/20 bg-white/15 px-2 shadow-[inset_0_-1px_0_rgba(255,255,255,.16)] backdrop-blur-md sm:h-9">
           <img className="mr-auto h-14 w-14 translate-y-5 object-contain sm:h-16 sm:w-16 sm:translate-y-6 lg:h-20 lg:w-20" src="/images/flower.webp" alt="" draggable={false} />
           <img className="h-[18px] w-auto object-contain sm:h-[22px]" src="/images/window-controls.png" alt="" draggable={false} />
         </header>
 
         <div className="relative min-h-0 flex-1 overflow-hidden">
-          <img className="absolute inset-0 h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} />
           <div className="relative z-10 grid h-full min-h-0 grid-rows-[minmax(8rem,auto)_minmax(0,1fr)] gap-2 px-5 py-3 sm:grid-rows-[minmax(10rem,auto)_minmax(0,1fr)] sm:px-8 md:grid-cols-[7rem_minmax(0,1fr)_7rem] md:grid-rows-1 md:justify-center md:gap-x-5 md:px-8 md:py-6 lg:grid-cols-[12rem_minmax(0,1fr)_12rem] lg:py-8">
             <div className="flex min-w-0 items-center px-4 pt-8 sm:pt-10 md:col-start-2 md:row-start-1 md:px-0 md:pt-12 lg:pt-10">
               <PortfolioCard />
@@ -192,12 +192,16 @@ export default function DesktopScreen() {
                 <DesktopIcon key={icon.name} {...icon} onOpen={icon.name === "meow" ? toggleKirpik : icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
               ))}
             </nav>
-            <nav className="hidden min-h-0 grid-rows-4 gap-y-3 md:col-start-1 md:row-start-1 md:grid" aria-label="Portfolio navigation left">
+            <nav className="hidden min-h-0 -translate-x-6 content-center gap-y-1 md:col-start-1 md:row-start-1 md:grid md:grid-rows-[repeat(5,minmax(0,6rem))] lg:-translate-x-8 lg:grid-rows-[repeat(5,minmax(0,7rem))]" aria-label="Portfolio navigation left">
               {leftNavigationIcons.map((icon) => (
                 <DesktopIcon key={icon.name} {...icon} onOpen={icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
               ))}
+              <div className="flex min-w-0 flex-col items-center justify-center gap-1.5 xl:gap-2">
+                <span className="h-12 w-12 border-2 border-dashed border-[#79497c]/70 bg-white/25 xl:h-18 xl:w-18" aria-hidden="true" />
+                <span className="font-pixel text-[10px] leading-none whitespace-nowrap text-black sm:text-xs xl:text-base">MUSIC</span>
+              </div>
             </nav>
-            <nav className="hidden min-h-0 grid-rows-5 gap-y-3 md:col-start-3 md:row-start-1 md:grid" aria-label="Portfolio navigation right">
+            <nav className="hidden min-h-0 translate-x-[17px] content-center gap-y-1 md:col-start-3 md:row-start-1 md:grid md:grid-rows-[repeat(5,minmax(0,6rem))] lg:grid-rows-[repeat(5,minmax(0,7rem))]" aria-label="Portfolio navigation right">
               {rightNavigationIcons.map((icon) => (
                 <DesktopIcon key={icon.name} {...icon} onOpen={icon.name === "meow" ? toggleKirpik : icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
               ))}
@@ -213,14 +217,14 @@ export default function DesktopScreen() {
 
         <footer className="relative z-20 h-8 shrink-0 border-t-2 border-white/90 bg-[#f4e7a1] shadow-[0_-3px_10px_rgba(121,73,124,.08)] sm:h-10">
           <div className="grid h-full grid-cols-2 gap-x-5 px-5 sm:px-8 md:grid-cols-[7rem_minmax(0,1fr)_7rem] md:gap-x-5 lg:grid-cols-[12rem_minmax(0,1fr)_12rem]">
-            <div className="flex -translate-x-4 items-center justify-center">
+            <div className="flex -translate-x-4 -translate-y-[3px] items-center justify-center">
             <DesktopIcon
               name="explore"
               label=""
               accessibleLabel={portfolioContent.desktop.exploreTitle}
               imageSrc="/images/explore.png"
               hoverImageSrc="/images/explore-hover.png"
-              imageSize="h-[30px] w-auto scale-x-125 sm:h-9"
+              imageSize="h-[30px] w-auto scale-[1.25] sm:h-9"
               visualSize="h-[30px] sm:h-9"
               onOpen={() => toggle("explore")}
             />
