@@ -7,11 +7,12 @@ import RetroPopup, { type PopupKind } from "./RetroPopup";
 import AboutPolaroid from "./AboutPolaroid";
 import DesktopWindow, { type MobileWindowPlacement, type WindowAnchor } from "./DesktopWindow";
 import ExploreWindow from "./ExploreWindow";
+import MusicPlayerWindow from "./MusicPlayerWindow";
 import KirpikAnimation from "./KirpikAnimation";
 import MobileKirpikAnimation, { type MobileKirpikPhase } from "./MobileKirpikAnimation";
 import { portfolioContent } from "../content/portfolio";
 
-type WindowKind = PopupKind | "explore" | "about";
+type WindowKind = PopupKind | "explore" | "about" | "music";
 type NavigationIcon = DesktopIconProps & { windowKind?: WindowKind };
 
 const iconSelector = (label: string) => `button[aria-label="${label}"]`;
@@ -24,6 +25,7 @@ const windowAnchors: Record<WindowKind, WindowAnchor> = {
   bookmark: { selector: iconSelector(portfolioContent.sections.bookmark.title), side: "right", gap: 24, vertical: -0.08 },
   explore: { selector: iconSelector(portfolioContent.desktop.exploreTitle), side: "right", gap: 14, vertical: -0.66 },
   about: { selector: iconSelector(portfolioContent.sections.about.title), side: "right", gap: 18, vertical: -0.24 },
+  music: { selector: iconSelector("Music"), side: "right", gap: 20, vertical: -0.75 },
 };
 
 const windowTitles: Record<WindowKind, string> = {
@@ -35,6 +37,7 @@ const windowTitles: Record<WindowKind, string> = {
   bookmark: portfolioContent.sections.bookmark.title,
   explore: portfolioContent.desktop.exploreTitle,
   about: portfolioContent.sections.about.title,
+  music: portfolioContent.musicPlayer.title,
 };
 
 const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
@@ -46,6 +49,7 @@ const mobileWindowPlacements: Record<WindowKind, MobileWindowPlacement> = {
   bookmark: { x: 0.04, y: 0.74 },
   about: { x: 0.14, y: 0.43 },
   explore: { x: 0.42, y: 0.68 },
+  music: { x: 0.08, y: 0.62 },
 };
 
 const leftNavigationIcons: NavigationIcon[] = [
@@ -78,7 +82,7 @@ const leftNavigationIcons: NavigationIcon[] = [
     name: "music",
     label: "MUSIC",
     accessibleLabel: "Music",
-    hasPopup: false,
+    windowKind: "music",
   },
 ];
 
@@ -244,6 +248,8 @@ export default function DesktopScreen() {
             <AboutPolaroid onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           ) : kind === "explore" ? (
             <ExploreWindow onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
+          ) : kind === "music" ? (
+            <MusicPlayerWindow onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           ) : (
             <RetroPopup kind={kind} onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           )}

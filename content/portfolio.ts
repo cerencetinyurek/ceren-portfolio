@@ -196,12 +196,19 @@ export const portfolioContent = {
     },
     popupMenu: ["File", "Edit", "View", "Image"],
   },
+  musicPlayer: {
+    title: "Music Player",
+    emptyTitle: "NO TRACK",
+    emptyArtist: "—",
+    tracks: [] as readonly { title: string; artist: string; src: string }[],
+  },
   accessibility: {
     desktopLabel: "Ceren’s portfolio desktop",
     closePopup: "Kapat",
     flipPolaroid: "Polaroid’i çevir",
     closeAbout: "About Polaroid’i kapat",
     closeExplore: "Explore penceresini kapat",
+    closeMusic: "Müzik çaları kapat",
     popupMenu: "Pencere menüsü",
   },
 } as const;
