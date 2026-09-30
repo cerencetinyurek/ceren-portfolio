@@ -220,7 +220,7 @@ body {
 .kirpik-stretching img { transform: scale(1.74); }
 .kirpik-sleeping img { transform: scale(1.7); }
 .kirpik-closing > img { opacity: 0; }
-.mobile-kirpik { position: absolute; left: calc(50% + 70px); bottom: 6px; padding: 0; border: 0; background: transparent; cursor: pointer; transform: translateX(-50%); transform-origin: bottom center; transition: width 220ms ease-out,height 220ms ease-out; }
+.mobile-kirpik { position: absolute; left: calc(50% + 20px); bottom: 6px; padding: 0; border: 0; background: transparent; cursor: pointer; transform: translateX(-50%); transform-origin: bottom center; transition: width 220ms ease-out,height 220ms ease-out; }
 .mobile-kirpik-sitting { width: 80px; height: 88px; }
 .mobile-kirpik-stretching { width: 122px; height: 102px; }
 .mobile-kirpik-sleeping,
