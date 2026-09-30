@@ -213,14 +213,14 @@ export default function DesktopScreen() {
 
         <footer className="relative z-20 h-8 shrink-0 border-t-2 border-white/90 bg-[#f4e7a1] shadow-[0_-3px_10px_rgba(121,73,124,.08)] sm:h-10">
           <div className="grid h-full grid-cols-2 gap-x-5 px-5 sm:px-8 md:grid-cols-[7rem_minmax(0,1fr)_7rem] md:gap-x-5 lg:grid-cols-[12rem_minmax(0,1fr)_12rem]">
-            <div className="flex items-center justify-center">
+            <div className="flex -translate-x-2 items-center justify-center">
             <DesktopIcon
               name="explore"
               label=""
               accessibleLabel={portfolioContent.desktop.exploreTitle}
               imageSrc="/images/explore.png"
               hoverImageSrc="/images/explore-hover.png"
-              imageSize="h-[30px] w-auto scale-125 sm:h-9"
+              imageSize="h-[30px] w-auto scale-x-125 sm:h-9"
               visualSize="h-[30px] sm:h-9"
               onOpen={() => toggle("explore")}
             />
