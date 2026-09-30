@@ -16,7 +16,7 @@ export default function PortfolioCard() {
         <div className="flex w-fit flex-col">
           <p className="m-0 text-left font-fredoka text-2xl leading-none text-black sm:text-4xl lg:text-4xl xl:text-5xl">{portfolioContent.hero.ownerName}</p>
           <h1 className="m-0 mt-3 font-pixel text-4xl leading-none font-normal whitespace-nowrap text-[#79497c] sm:mt-5 sm:text-6xl lg:text-7xl xl:text-8xl">{portfolioContent.hero.title}</h1>
-          <p className="m-0 mt-3 text-right font-fredoka text-[8px] leading-none text-black sm:mt-5 sm:text-xs">{portfolioContent.hero.subtitle}</p>
+          <p className="m-0 mt-3 text-right font-fredoka text-[9px] leading-none text-black sm:mt-5 sm:text-[13px] xl:text-[15px]">{portfolioContent.hero.subtitle}</p>
         </div>
       </div>
       {stickers.map((sticker, index) => (

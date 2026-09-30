@@ -12,7 +12,7 @@ export const portfolioContent = {
   hero: {
     ownerName: "CEREN’S",
     title: "PORTFOLIO",
-    subtitle: "biomedical engineer / researcher / maker",
+    subtitle: "biomedical engineer",
   },
   sections: {
     about: {

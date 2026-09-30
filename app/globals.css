@@ -264,9 +264,9 @@ body {
 }
 
 @media (min-width: 769px) and (min-aspect-ratio: 5 / 4) and (max-aspect-ratio: 3 / 2) {
-  .portfolio-card-shell { scale: .5; }
+  .portfolio-card-shell { scale: .6; }
 }
 
 @media (min-width: 769px) and (max-aspect-ratio: 5 / 4) {
-  .portfolio-card-shell { scale: .4; }
+  .portfolio-card-shell { scale: .6; }
 }
