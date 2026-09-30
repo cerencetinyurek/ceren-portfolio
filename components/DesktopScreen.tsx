@@ -74,6 +74,12 @@ const leftNavigationIcons: NavigationIcon[] = [
     windowKind: "bookmark",
     imageSize: "h-12 w-12 sm:h-12 sm:w-12 md:h-11 md:w-11 xl:h-15 xl:w-15",
   },
+  {
+    name: "music",
+    label: "MUSIC",
+    accessibleLabel: "Music",
+    hasPopup: false,
+  },
 ];
 
 const rightNavigationIcons: NavigationIcon[] = [
@@ -199,7 +205,6 @@ export default function DesktopScreen() {
               {leftNavigationIcons.map((icon) => (
                 <DesktopIcon key={icon.name} {...icon} onOpen={icon.windowKind ? () => toggle(icon.windowKind!) : undefined} />
               ))}
-              <DesktopIcon name="music" label="MUSIC" hasPopup={false} />
             </nav>
             <nav className="hidden min-h-0 translate-x-[17px] content-center gap-y-1 md:col-start-3 md:row-start-1 md:grid md:grid-rows-[repeat(5,minmax(0,6rem))] lg:grid-rows-[repeat(5,minmax(0,7rem))]" aria-label="Portfolio navigation right">
               {rightNavigationIcons.map((icon) => (
