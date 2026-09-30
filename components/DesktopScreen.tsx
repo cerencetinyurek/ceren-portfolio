@@ -220,7 +220,7 @@ export default function DesktopScreen() {
               accessibleLabel={portfolioContent.desktop.exploreTitle}
               imageSrc="/images/explore.png"
               hoverImageSrc="/images/explore-hover.png"
-              imageSize="h-[30px] w-auto sm:h-9"
+              imageSize="h-[30px] w-auto scale-125 sm:h-9"
               visualSize="h-[30px] sm:h-9"
               onOpen={() => toggle("explore")}
             />
