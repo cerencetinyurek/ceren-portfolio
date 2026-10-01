@@ -61,7 +61,7 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
         <span className="font-pixel text-[clamp(13px,6cqw,20px)] text-[#58365b]">{portfolioContent.musicPlayer.title}</span>
       </div>
       <button type="button" className="absolute right-1 top-1 grid h-10 w-10 cursor-pointer place-items-center border-0 bg-transparent" aria-label={portfolioContent.accessibility.closeMusic} onClick={onClose}>
-        <img className="h-5 w-5 object-contain [image-rendering:pixelated]" src="/images/window-close.png" alt="" draggable={false} />
+        <img className="h-5 w-5 object-contain [image-rendering:pixelated]" src="/images/window-close.png" alt="" draggable={false} width={26} height={28} />
       </button>
 
       <div className="relative mt-2 flex min-h-0 flex-1 flex-col items-center overflow-hidden border-2 border-[#79497c] bg-[linear-gradient(rgba(224,160,210,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(224,160,210,.16)_1px,transparent_1px),#f8dbea] bg-[size:18px_18px] px-4 py-1 text-[#58365b]">

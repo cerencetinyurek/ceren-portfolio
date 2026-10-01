@@ -113,7 +113,7 @@ export default function KirpikAnimation({ runId, closing, onClosed }: KirpikAnim
 
   return (
     <div ref={spriteRef} className={`kirpik-sprite kirpik-${phase}${closing ? " kirpik-closing" : ""}`} aria-hidden="true">
-      <img src={frameSource(frame)} alt="" draggable={false} />
+      <img src={frameSource(frame)} alt="" draggable={false} width={64} height={64} decoding="async" />
       {closing && <span className="kirpik-pixel-heart"><span /></span>}
     </div>
   );

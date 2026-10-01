@@ -70,6 +70,7 @@ const personStructuredData = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><head>
     <link rel="preload" href="/images/bg-liquified-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
+    <link rel="preload" href="/images/bg-liquified.webp" as="image" type="image/webp" media="(min-width: 769px)" />
   </head><body suppressHydrationWarning>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }} />
     {children}<FlowerCursor />

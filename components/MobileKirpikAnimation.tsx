@@ -47,6 +47,9 @@ export default function MobileKirpikAnimation({
         src={`/images/kirpik-gif/${frames[visiblePhase]}.png`}
         alt=""
         draggable={false}
+        width={64}
+        height={64}
+        decoding="async"
       />
       {phase === "closing" && (
         <span className="kirpik-pixel-heart">

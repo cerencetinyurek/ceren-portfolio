@@ -21,7 +21,7 @@ export default function PortfolioCard() {
       </div>
       {stickers.map((sticker, index) => (
         <div key={sticker.name} className={`sticker-float sticker-float-${index} pointer-events-none absolute z-[3] aspect-square ${sticker.className}`}>
-          <img src={`/images/${sticker.name}.webp`} alt="" draggable={false} className="h-full w-full object-contain select-none" style={{ transform: `rotate(${sticker.rotate}deg)` }} />
+          <img src={`/images/${sticker.name}.webp`} alt="" draggable={false} width={256} height={256} decoding="async" className="h-full w-full object-contain select-none" style={{ transform: `rotate(${sticker.rotate}deg)` }} />
         </div>
       ))}
     </div>

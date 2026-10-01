@@ -1,16 +1,20 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import DesktopIcon, { type DesktopIconProps } from "./DesktopIcon";
 import PortfolioCard from "./PortfolioCard";
-import RetroPopup, { type PopupKind } from "./RetroPopup";
-import AboutPolaroid from "./AboutPolaroid";
+import type { PopupKind } from "./RetroPopup";
 import DesktopWindow, { type MobileWindowPlacement, type WindowAnchor } from "./DesktopWindow";
-import ExploreWindow from "./ExploreWindow";
-import MusicPlayerWindow from "./MusicPlayerWindow";
-import KirpikAnimation from "./KirpikAnimation";
-import MobileKirpikAnimation, { type MobileKirpikPhase } from "./MobileKirpikAnimation";
+import type { MobileKirpikPhase } from "./MobileKirpikAnimation";
 import { portfolioContent } from "../content/portfolio";
+
+const RetroPopup = dynamic(() => import("./RetroPopup"));
+const AboutPolaroid = dynamic(() => import("./AboutPolaroid"));
+const ExploreWindow = dynamic(() => import("./ExploreWindow"));
+const MusicPlayerWindow = dynamic(() => import("./MusicPlayerWindow"));
+const KirpikAnimation = dynamic(() => import("./KirpikAnimation"));
+const MobileKirpikAnimation = dynamic(() => import("./MobileKirpikAnimation"));
 
 type WindowKind = PopupKind | "explore" | "about" | "music";
 type NavigationIcon = DesktopIconProps & { windowKind?: WindowKind };
@@ -188,11 +192,11 @@ export default function DesktopScreen() {
       <section className="relative flex h-full max-h-[1025px] w-full max-w-[1200px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)] md:scale-90" aria-label={portfolioContent.accessibility.desktopLabel}>
         <picture className="absolute inset-0 block">
           <source media="(max-width: 768px)" srcSet="/images/bg-liquified-mobile.webp" type="image/webp" />
-          <img className="h-full w-full object-cover" src="/images/bg-liquified.png" alt="" draggable={false} fetchPriority="high" decoding="async" />
+          <img className="h-full w-full object-cover" src="/images/bg-liquified.webp" alt="" draggable={false} width={1080} height={810} fetchPriority="high" decoding="async" />
         </picture>
         <header className="desktop-titlebar relative z-20 flex h-8 shrink-0 items-center justify-end gap-1 border-b border-white/20 bg-white/15 px-2 shadow-[inset_0_-1px_0_rgba(255,255,255,.16)] backdrop-blur-md sm:h-9">
           <img className="mr-auto h-14 w-14 translate-y-5 object-contain sm:h-16 sm:w-16 sm:translate-y-6 lg:h-20 lg:w-20" src="/images/flower-optimized.webp" alt="" draggable={false} width={256} height={256} decoding="async" />
-          <img className="h-[18px] w-auto object-contain sm:h-[22px]" src="/images/window-controls.png" alt="" draggable={false} />
+          <img className="h-[18px] w-auto object-contain sm:h-[22px]" src="/images/window-controls.png" alt="" draggable={false} width={106} height={32} decoding="async" />
         </header>
 
         <div className="relative min-h-0 flex-1 overflow-hidden">
@@ -217,10 +221,10 @@ export default function DesktopScreen() {
             </nav>
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 hidden h-20 lg:block">
-            <KirpikAnimation runId={kirpikRun} closing={kirpikClosing} onClosed={removeKirpik} />
+            {kirpikRun !== null ? <KirpikAnimation runId={kirpikRun} closing={kirpikClosing} onClosed={removeKirpik} /> : null}
           </div>
           <div className="absolute inset-x-0 bottom-0 z-20 lg:hidden">
-            <MobileKirpikAnimation phase={mobileKirpikPhase} onAdvance={advanceMobileKirpikState} onClosed={() => setMobileKirpikPhase("hidden")} />
+            {mobileKirpikPhase !== "hidden" ? <MobileKirpikAnimation phase={mobileKirpikPhase} onAdvance={advanceMobileKirpikState} onClosed={() => setMobileKirpikPhase("hidden")} /> : null}
           </div>
         </div>
 
@@ -233,6 +237,8 @@ export default function DesktopScreen() {
               accessibleLabel={portfolioContent.desktop.exploreTitle}
               imageSrc="/images/explore.png"
               hoverImageSrc="/images/explore-hover.png"
+              imageWidth={386}
+              imageHeight={172}
               imageSize="h-[30px] w-auto scale-[1.25] sm:h-9"
               visualSize="h-[30px] sm:h-9"
               onOpen={() => toggle("explore")}
