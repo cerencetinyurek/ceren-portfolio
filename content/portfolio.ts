@@ -6,8 +6,6 @@ export type PortfolioPopupKind =
   | "contact"
   | "bookmark";
 
-const comingSoon = "İçerik yakında eklenecek.";
-
 export const portfolioContent = {
   hero: {
     ownerName: "CEREN’S",
@@ -175,7 +173,11 @@ export const portfolioContent = {
     bookmark: {
       title: "Bookmark",
       navigationLabel: "BOOKMARK",
-      content: comingSoon,
+      content: {
+        type: "bookmark",
+        heading: "A little reminder ♡",
+        quote: "“You can’t become a butterfly\novernight. Leaving the cocoon\ntakes time; first, you have to\nbuild it patiently, stitch by\nstitch.”",
+      },
     },
     booknook: {
       title: "Booknook",

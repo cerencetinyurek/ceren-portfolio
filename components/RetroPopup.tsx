@@ -15,6 +15,7 @@ type StructuredContent =
   | { type: "projects"; items: readonly { number: string; title: string; description: string }[] }
   | { type: "skills"; groups: readonly { title: string; items: readonly string[] }[] }
   | { type: "hobbies"; items: readonly string[] }
+  | { type: "bookmark"; heading: string; quote: string }
   | { type: "contact"; items: readonly { label: string; value: string; url: string }[] };
 
 function PopupBody({ content }: { content: string | StructuredContent }) {
@@ -52,6 +53,11 @@ function PopupBody({ content }: { content: string | StructuredContent }) {
   if (content.type === "hobbies") return <ul className="popup-hobby-list">
     {content.items.map((item) => <li key={item}>{item}</li>)}
   </ul>;
+
+  if (content.type === "bookmark") return <div className="popup-bookmark">
+    <h3>{content.heading}</h3>
+    <p>{content.quote.split("\n").map((line) => <span key={line}>{line}</span>)}</p>
+  </div>;
 
   return <address className="popup-contact-list">
     {content.items.map((item) => <a key={item.label} href={item.url}>
