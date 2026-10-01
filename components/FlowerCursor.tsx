@@ -75,8 +75,8 @@ export default function FlowerCursor() {
     };
   }, []);
   return <div ref={layer} popover="manual" className="flower-cursor" aria-hidden="true">
-    <img src="/images/flower-optimized.webp" alt="" draggable={false} width={256} height={256} loading="lazy" decoding="async" />
-    <img src="/images/cursor-purple.webp" alt="" draggable={false} width={256} height={256} loading="lazy" decoding="async" />
-    <img src="/images/cursor-white.webp" alt="" draggable={false} width={256} height={256} loading="lazy" decoding="async" />
+    <img src="/images/flower-cursor-optimized.webp" alt="" draggable={false} width={64} height={64} loading="lazy" decoding="async" />
+    <img src="/images/cursor-purple-optimized.webp" alt="" draggable={false} width={64} height={64} loading="lazy" decoding="async" />
+    <img src="/images/cursor-white-optimized.webp" alt="" draggable={false} width={64} height={64} loading="lazy" decoding="async" />
   </div>;
 }

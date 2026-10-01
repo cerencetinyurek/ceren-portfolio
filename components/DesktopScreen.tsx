@@ -189,7 +189,7 @@ export default function DesktopScreen() {
 
   return (
     <>
-      <section className="relative flex h-full max-h-[1025px] w-full max-w-[1200px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)] md:scale-90" aria-label={portfolioContent.accessibility.desktopLabel}>
+      <section className="relative flex h-full max-h-[1025px] w-full max-w-[960px] min-h-0 flex-col overflow-hidden border-[6px] border-[#f4e7a1] bg-[#f4e7a1] shadow-[0_8px_24px_rgba(121,73,124,.14)] md:scale-90" aria-label={portfolioContent.accessibility.desktopLabel}>
         <picture className="absolute inset-0 block">
           <source media="(max-width: 768px)" srcSet="/images/bg-liquified-mobile.webp" type="image/webp" />
           <img className="h-full w-full object-cover" src="/images/bg-liquified.webp" alt="" draggable={false} width={1080} height={810} fetchPriority="high" decoding="async" />
