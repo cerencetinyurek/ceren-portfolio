@@ -200,7 +200,23 @@ export const portfolioContent = {
     title: "Music Player",
     emptyTitle: "NO TRACK",
     emptyArtist: "—",
-    tracks: [] as readonly { title: string; artist: string; src: string }[],
+    tracks: [
+      {
+        title: "Adrift",
+        artist: "alanajordan",
+        src: "/music/Adrift — alanajordan.mp3",
+      },
+      {
+        title: "Bedroom Pop Chill Daydream",
+        artist: "alex-morgan",
+        src: "/music/Bedroom Pop Chill Daydream — alex-morgan.mp3",
+      },
+      {
+        title: "Toast Crumbs in My Bed",
+        artist: "Dreamy Indie Pop Female Vocals",
+        src: "/music/Toast Crumbs in My Bed – Dreamy Indie Pop Female Vocals.mp3",
+      },
+    ] as readonly { title: string; artist: string; src: string }[],
   },
   accessibility: {
     desktopLabel: "Ceren’s portfolio desktop",

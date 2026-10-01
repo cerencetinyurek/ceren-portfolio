@@ -11,6 +11,7 @@ const formatTime = (seconds: number) => {
 
 export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playAfterTrackChange = useRef(false);
   const [trackIndex, setTrackIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -20,9 +21,14 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
   const track = tracks[trackIndex];
 
   useEffect(() => {
+    const audio = audioRef.current;
     setPlaying(false);
     setCurrentTime(0);
-    audioRef.current?.load();
+    audio?.load();
+    if (audio && playAfterTrackChange.current) {
+      playAfterTrackChange.current = false;
+      void audio.play().catch(() => setPlaying(false));
+    }
   }, [trackIndex]);
 
   const togglePlayback = async () => {
@@ -34,6 +40,7 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
 
   const changeTrack = (direction: number) => {
     if (!tracks.length) return;
+    playAfterTrackChange.current = true;
     setTrackIndex((current) => (current + direction + tracks.length) % tracks.length);
   };
 
@@ -63,7 +70,7 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
         </div>
         <span className="absolute right-3 top-2 font-pixel text-sm opacity-55" aria-hidden="true">♪ ✦</span>
         <span className="pointer-events-none absolute left-3 top-[27%] -rotate-12 font-pixel text-[13px] text-[#b66fa8] drop-shadow-[1px_1px_0_#fff]" aria-hidden="true">♥</span>
-        <span className="absolute right-3 top-[45%] rotate-12 font-pixel text-[15px] text-[#9d72b5] drop-shadow-[1px_1px_0_#fff]" aria-hidden="true">✦</span>
+        <span className="absolute right-3 top-[34%] rotate-12 font-pixel text-[15px] text-[#9d72b5] drop-shadow-[1px_1px_0_#fff]" aria-hidden="true">✦</span>
 
         <div className={`grid aspect-square w-[21%] shrink-0 place-items-center rounded-full border-[4px] border-[#79497c] bg-[radial-gradient(circle,#f8dbea_0_13%,#79497c_14%_22%,#d49bc9_23%_38%,#79497c_39%_45%,#e9a8cf_46%)] shadow-[3px_3px_0_rgba(121,73,124,.25)] ${playing ? "motion-safe:animate-[spin_3s_linear_infinite]" : ""}`}>
           <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-[#79497c] bg-[#fff3bd] font-serif text-[20px] font-black leading-none text-[#58365b] shadow-[1px_1px_0_#fff]">♪</span>
@@ -95,11 +102,13 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
         <div className="mt-1 w-full shrink-0 border-t border-dashed border-[#b77ca9] pt-1.5">
           <div className="grid w-full grid-cols-3 items-center gap-2 px-1">
             <button type="button" className="h-6 w-full min-w-0 border-2 border-[#79497c] bg-[#f2b9d8] font-pixel text-[9px] shadow-[2px_2px_0_#79497c] disabled:opacity-65" disabled={!track} onClick={() => changeTrack(-1)} aria-label="Previous track">|◀</button>
-            <button type="button" className="h-7 w-full min-w-0 border-2 border-[#79497c] bg-[#f7cbe2] font-pixel text-xs shadow-[2px_2px_0_#79497c] disabled:opacity-65" disabled={!track} onClick={togglePlayback} aria-label={playing ? "Pause" : "Play"}>{playing ? "Ⅱ" : "▶"}</button>
+            <button type="button" className="grid h-7 w-full min-w-0 place-items-center border-2 border-[#79497c] bg-[#f7cbe2] font-pixel text-xs shadow-[2px_2px_0_#79497c] disabled:opacity-65" disabled={!track} onClick={togglePlayback} aria-label={playing ? "Pause" : "Play"}>
+              {playing ? <span className="flex items-center gap-1" aria-hidden="true"><span className="h-3 w-1 bg-[#58365b]" /><span className="h-3 w-1 bg-[#58365b]" /></span> : "▶"}
+            </button>
             <button type="button" className="h-6 w-full min-w-0 border-2 border-[#79497c] bg-[#f2b9d8] font-pixel text-[9px] shadow-[2px_2px_0_#79497c] disabled:opacity-65" disabled={!track} onClick={() => changeTrack(1)} aria-label="Next track">▶|</button>
           </div>
 
-          <label className="mt-1 hidden w-full touch-none items-center gap-2 rounded-sm bg-[#efbfd9]/70 px-2 py-0.5 font-fredoka text-[9px] md:flex">
+          <label className="mt-4 hidden w-full touch-none items-center gap-2 rounded-sm bg-[#efbfd9]/70 px-2 py-0.5 font-fredoka text-[9px] md:flex">
             <span className="shrink-0 font-pixel text-[8px]">VOL</span>
             <input
               className="h-2 min-w-0 flex-1 cursor-pointer touch-none appearance-none rounded-full border border-[#b77ca9] [&::-moz-range-progress]:h-full [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-[#ffe47c] [&::-moz-range-thumb]:h-6 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-none [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[url('/images/cursor-purple.webp')] [&::-moz-range-thumb]:bg-contain [&::-moz-range-thumb]:bg-center [&::-moz-range-thumb]:bg-no-repeat [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-[url('/images/cursor-purple.webp')] [&::-webkit-slider-thumb]:bg-contain [&::-webkit-slider-thumb]:bg-center [&::-webkit-slider-thumb]:bg-no-repeat"

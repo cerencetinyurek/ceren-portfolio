@@ -243,7 +243,7 @@ export default function DesktopScreen() {
       </section>
 
       {windows.map((kind, index) => (
-        <DesktopWindow key={kind} label={windowTitles[kind]} anchor={windowAnchors[kind]} mobilePlacement={mobileWindowPlacements[kind]} zIndex={100 + index} onActivate={() => activate(kind)} className={kind === "about" ? "desktop-window-about" : kind === "explore" ? "desktop-window-explore" : "desktop-window-popup"}>
+        <DesktopWindow key={kind} label={windowTitles[kind]} anchor={windowAnchors[kind]} mobilePlacement={mobileWindowPlacements[kind]} zIndex={100 + index} onActivate={() => activate(kind)} className={kind === "about" ? "desktop-window-about" : kind === "explore" ? "desktop-window-explore" : kind === "music" ? "desktop-window-popup !w-[min(280px,78vw)] !max-w-[280px]" : "desktop-window-popup"}>
           {kind === "about" ? (
             <AboutPolaroid onClose={() => setWindows((previous) => previous.filter((item) => item !== kind))} />
           ) : kind === "explore" ? (
