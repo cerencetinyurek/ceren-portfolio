@@ -111,7 +111,7 @@ export default function MusicPlayerWindow({ onClose }: { onClose: () => void }) 
           <label className="mt-4 hidden w-full touch-none items-center gap-2 rounded-sm bg-[#efbfd9]/70 px-2 py-0.5 font-fredoka text-[9px] md:flex">
             <span className="shrink-0 font-pixel text-[8px]">VOL</span>
             <input
-              className="h-2 min-w-0 flex-1 cursor-pointer touch-none appearance-none rounded-full border border-[#b77ca9] [&::-moz-range-progress]:h-full [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-[#ffe47c] [&::-moz-range-thumb]:h-6 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-none [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-transparent [&::-moz-range-thumb]:bg-[url('/images/cursor-purple-optimized.webp')] [&::-moz-range-thumb]:bg-contain [&::-moz-range-thumb]:bg-center [&::-moz-range-thumb]:bg-no-repeat [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-0 [&::-webkit-slider-thumb]:bg-transparent [&::-webkit-slider-thumb]:bg-[url('/images/cursor-purple-optimized.webp')] [&::-webkit-slider-thumb]:bg-contain [&::-webkit-slider-thumb]:bg-center [&::-webkit-slider-thumb]:bg-no-repeat"
+              className="music-volume-slider h-2 min-w-0 flex-1 cursor-pointer touch-none appearance-none rounded-full border border-[#b77ca9] [&::-moz-range-progress]:h-full [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-[#ffe47c]"
               style={{ background: `linear-gradient(to right, #ffe47c 0%, #ffe47c ${volume * 100}%, #f8dbea ${volume * 100}%, #f8dbea 100%)` }}
               type="range"
               min="0"
